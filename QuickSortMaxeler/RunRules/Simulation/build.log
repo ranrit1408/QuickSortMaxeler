@@ -1,0 +1,82 @@
+Mon 22:56: ########################################## 
+Mon 22:56: Compiling.
+Mon 22:56: ########################################## 
+
+Mon 22:56: MaxCompiler version: 2015.1.1 (simulation only).
+Mon 22:56: Build Simulation run rule for QuickSortMaxeler start time: Mon Jun 13 22:56:58 PDT 2016.
+Mon 22:56: Project location: /home/demo/workspace/QuickSortMaxeler.
+Mon 22:56: Detailed build log: /home/demo/workspace/QuickSortMaxeler/RunRules/Simulation/build.log.
+
+Mon 22:56: Compiling Engine Code.
+Mon 22:56: Building QuickSortMaxeler.max file. 
+Mon 22:56: Setting environment variable:
+Mon 22:56: MAXCOMPILER_BUILD_DIR : /home/demo/workspace/QuickSortMaxeler/RunRules/Simulation/maxfiles
+Mon 22:56: MAX_BUILDPARAMS : DFEModel='VECTIS' target='DFE_SIM' maxFileName='QuickSortMaxeler'  
+Mon 22:56: Building output:
+Mon 22:57: MaxCompiler version: 2015.1.1 (simulation only)
+Mon 22:57: Build "QuickSortMaxeler" start time: Mon Jun 13 22:57:00 PDT 2016
+Mon 22:57: Main build process running as user demo on host localhost.localdomain
+Mon 22:57: Build location: /home/demo/Desktop/MaxCompiler-Builds/QuickSortMaxeler_VECTIS_DFE_SIM
+Mon 22:57: Detailed build log available in "_build.log"
+Mon 22:57: Instantiating manager
+Mon 22:57: Instantiating kernel "QuickSortMaxelerKernel"
+Mon 22:57: Compiling manager (CPU I/O Only)
+Mon 22:57: 
+Mon 22:57: Compiling kernel "QuickSortMaxelerKernel"
+Mon 22:57: Running back-end simulation build (3 phases)
+Mon 22:57: (1/3) - Prepare MaxFile Data (GenerateMaxFileDataFile)
+Mon 22:57: (2/3) - Compile Simulation Modules (SimCompilePass)
+Mon 22:57: (3/3) - Generate MaxFile (AddSimObjectToMaxFilePass)
+Mon 22:57: MaxFile: /home/demo/Desktop/MaxCompiler-Builds/QuickSortMaxeler_VECTIS_DFE_SIM/results/QuickSortMaxeler.max (MD5Sum: e9f5e74e62e671818613644a19f22410)
+Mon 22:57: Build completed: Mon Jun 13 22:57:07 PDT 2016 (took 7 secs)
+Mon 22:57: Executing command:
+Mon 22:57: cp /home/demo/workspace/QuickSortMaxeler/RunRules/Simulation/maxfiles/QuickSortMaxeler.h /home/demo/workspace/QuickSortMaxeler/RunRules/Simulation/include/QuickSortMaxeler.h 
+Mon 22:57: Command output:
+Mon 22:57: Building: QuickSortMaxeler.max file finished.
+Mon 22:57: Engine build finished.
+Mon 22:57: Compiling CPU Code.
+Mon 22:57: Run CPU project make files updating
+Mon 22:57: Executing command:
+Mon 22:57: java -jar /opt/maxeler/maxcompiler/lib/MaxIDE/projectAdmin.jar -u /home/demo/workspace/QuickSortMaxeler Simulation 
+Mon 22:57: Command output:
+
+Mon 22:57: MaxCompiler Project Admin Tool Version 2015.1.10001
+Mon 22:57:  Copyright Maxeler Technologies 2010 - 2015. All rights reserved.
+
+Mon 22:57: Handler version 2
+Mon 22:57: Updating RunRule dependent Makefiles for RunRule 'Simulation'
+Mon 22:57: 	Updating: Simulation
+Mon 22:57: Found makefiles: 1
+Mon 22:57: 	Updated: Simulation
+Mon 22:57: Run CPU make.
+Mon 22:57: make RUNRULE=Simulation 
+Mon 22:57: Command output:
+Mon 22:57: make -f Makefile.rules build
+Mon 22:57: make[1]: Entering directory `/home/demo/workspace/QuickSortMaxeler/CPUCode'
+Mon 22:57: set -e; rm -f ../RunRules/Simulation/objects/c/QuickSortMaxelerCpuCode.d ;                                                             \
+Mon 22:57: 	  cc -M -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxeler/maxcompiler/include/slic'  -Wno-error QuickSortMaxelerCpuCode.c > ../RunRules/Simulation/objects/c/QuickSortMaxelerCpuCode.d.$$ ;                                 \
+Mon 22:57:       sed 's,\(QuickSortMaxelerCpuCode\)\.o[ :]*,../RunRules/Simulation/objects/c/\1.o ../RunRules/Simulation/objects/c/QuickSortMaxelerCpuCode.d : ,g' < ../RunRules/Simulation/objects/c/QuickSortMaxelerCpuCode.d.$$ > ../RunRules/Simulation/objects/c/QuickSortMaxelerCpuCode.d; \
+Mon 22:57:       rm -f ../RunRules/Simulation/objects/c/QuickSortMaxelerCpuCode.d.$$
+Mon 22:57: make[1]: Leaving directory `/home/demo/workspace/QuickSortMaxeler/CPUCode'
+Mon 22:57: make[1]: Entering directory `/home/demo/workspace/QuickSortMaxeler/CPUCode'
+Mon 22:57: "/opt/maxeler/maxcompiler/bin/sliccompile" ../RunRules/Simulation/maxfiles/QuickSortMaxeler.max ../RunRules/Simulation/objects/maxfiles/slic_QuickSortMaxeler.o
+Mon 22:57: Processing maxfile for VECTIS_SIM from '../RunRules/Simulation/maxfiles/QuickSortMaxeler.max'.
+Mon 22:57: gcc -std=gnu99 -Wall -Werror -fno-guess-branch-probability -frandom-seed=foo -Wno-unused-variable -Wno-unused-function -fPIC -I /opt/maxeler/maxcompiler/include/slic -DMAXFILE_INC="/home/demo/workspace/QuickSortMaxeler/CPUCode/../RunRules/Simulation/maxfiles/QuickSortMaxeler.max" -DSLIC_NO_DESTRUCTORS -c /opt/maxeler/maxcompiler/src/slicinterface/MaxFileInit.c -o slic_QuickSortMaxeler.o 
+Mon 22:57: Copying .max file C object into '/home/demo/workspace/QuickSortMaxeler/CPUCode/../RunRules/Simulation/objects/maxfiles'
+Mon 22:57: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxeler/maxcompiler/include/slic'  -c QuickSortMaxelerCpuCode.c -o ../RunRules/Simulation/objects/c/QuickSortMaxelerCpuCode.o
+Mon 22:57: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxeler/maxcompiler/include/slic'  -o ../RunRules/Simulation/binaries/QuickSortMaxeler ../RunRules/Simulation/objects/maxfiles/slic_QuickSortMaxeler.o ../RunRules/Simulation/objects/c/QuickSortMaxelerCpuCode.o -g -O3  -L '/opt/maxeler/maxcompiler/lib' -lslic -L '/opt/maxeler/maxcompiler/lib/maxeleros-sim/lib' -lmaxeleros -lpthread -lm -lrt 
+Mon 22:57: make[1]: Leaving directory `/home/demo/workspace/QuickSortMaxeler/CPUCode'
+Mon 22:57: Build completed: Mon Jun 13 22:57:10 PDT 2016
+
+
+Mon 22:57: ########################################## 
+Mon 22:57: Running
+Mon 22:57: ########################################## 
+Mon 22:57: Executing command:
+Mon 22:57: '/home/demo/workspace/QuickSortMaxeler/RunRules/Simulation/binaries/QuickSortMaxeler' 
+Mon 22:57: Command output:
+Mon 22:57: Execution Time for 256 elements using QuickSort with C implementation: 0.00000 seconds
+Mon 22:57: Running DFE.
+Mon 22:57: Execution Time for 256 elements using QuickSort using DFE Kernel implementation: 0.01000 seconds
+Mon 22:57: Test passed OK!
+Mon 22:57: Process terminated with exit code 0.

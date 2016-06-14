@@ -1,0 +1,1613 @@
+#ifdef MAXCOMPILER_VERSION_INFO
+#define MAXCOMPILER_VERSION_INFO_PRESENT 1
+#define MAXFILE_MAXCOMPILER_VERSION_YEAR         2015
+#define MAXFILE_MAXCOMPILER_VERSION_NUM          1
+#define MAXFILE_MAXCOMPILER_VERSION_POINT        1
+#define MAXFILE_MAXCOMPILER_VERSION_PATCH        ""
+#define MAXFILE_MAXCOMPILER_VERSION_REV          44944
+#define MAXFILE_MAXCOMPILER_VERSION_RELEASE_DATE "2015-08-07"
+#define MAXFILE_MAXCOMPILER_VERSION_RELEASE_MODE true
+#endif
+
+#ifdef MAXFILE_BUILD_INFO
+#define MAXFILE_BUILD_INFO_PRESENT 1
+#define MAXFILE_BUILD_NAME "QuickSortMaxeler"
+#define MAXFILE_BUILD_DIR  "/home/demo/Desktop/MaxCompiler-Builds/QuickSortMaxeler_VECTIS_DFE_SIM"
+#define MAXFILE_BUILD_DATE  20160613
+#define MAXFILE_BUILD_REV   1
+#endif
+
+#ifdef PARAM
+#define PARAM_PRESENT 1
+PARAM(CONTAINS_WATCHES, 1)
+PARAM(APP_ID, 0)
+PARAM(REV_ID, 0)
+PARAM(CHAIN_LENGTH, 37)
+PARAM(IS_SIMULATION, 1)
+PARAM(MEC_SUPPORTED, 1)
+PARAM(PCIE_SLAVE_STREAMING, 0)
+PARAM(PCIE_ALIGNMENT, 16)
+PARAM(NUM_IFPGA_LINKS, 0)
+#endif
+
+#ifdef STRING_PARAM
+#define STRING_PARAM_PRESENT 1
+STRING_PARAM(BOARD_MODEL, "MAX3424A")
+#endif
+
+
+
+#ifdef INCLUDE_GENERATED_CPP_HEADERS
+#include "QuickSortMaxelerKernel.h"
+#endif
+
+
+
+
+
+
+
+
+
+
+#ifdef MANAGER_NODE
+#define MANAGER_NODE_PRESENT 1
+MANAGER_NODE(QuickSortMaxelerKernel, Kernel)
+MANAGER_NODE(addressA, PCIe_From_Host_fwd)
+MANAGER_NODE(addressB, PCIe_From_Host_fwd)
+MANAGER_NODE(outputA, PCIe_To_Host_fwd)
+MANAGER_NODE(outputB, PCIe_To_Host_fwd)
+MANAGER_NODE(watch_QuickSortMaxelerKernel, WatchBlock)
+MANAGER_NODE(Stream_1, DualAspectMux)
+MANAGER_NODE(Stream_4, DualAspectMux)
+MANAGER_NODE(Stream_9, DualAspectReg)
+MANAGER_NODE(Stream_12, DualAspectReg)
+MANAGER_NODE(Stream_33, StreamPullPushAdapter)
+MANAGER_NODE(Stream_37, StreamPullPushAdapter)
+MANAGER_NODE(Stream_25, Fifo)
+MANAGER_NODE(Stream_29, Fifo)
+MANAGER_NODE(Stream_31, Fifo)
+MANAGER_NODE(Stream_35, Fifo)
+#endif
+
+#ifdef MANAGER_NODE_IO
+#define MANAGER_NODE_IO_PRESENT 1
+MANAGER_NODE_IO(QuickSortMaxelerKernel, addressA, IN, STREAM, 8, PULL)
+MANAGER_NODE_IO(QuickSortMaxelerKernel, addressB, IN, STREAM, 8, PULL)
+MANAGER_NODE_IO(QuickSortMaxelerKernel, outputA, OUT, STREAM, 32, PUSH)
+MANAGER_NODE_IO(QuickSortMaxelerKernel, outputB, OUT, STREAM, 32, PUSH)
+MANAGER_NODE_IO(QuickSortMaxelerKernel, internal_watch_addressa_output, OUT, STREAM, 8, PUSH)
+MANAGER_NODE_IO(QuickSortMaxelerKernel, internal_watch_reada_output, OUT, STREAM, 32, PUSH)
+MANAGER_NODE_IO(QuickSortMaxelerKernel, internal_watch_addressb_output, OUT, STREAM, 8, PUSH)
+MANAGER_NODE_IO(QuickSortMaxelerKernel, internal_watch_readb_output, OUT, STREAM, 32, PUSH)
+MANAGER_NODE_IO(addressA, addressA, OUT, STREAM, 128, PULL)
+MANAGER_NODE_IO(addressB, addressB, OUT, STREAM, 128, PULL)
+MANAGER_NODE_IO(outputA, outputA, IN, STREAM, 128, PUSH)
+MANAGER_NODE_IO(outputB, outputB, IN, STREAM, 128, PUSH)
+MANAGER_NODE_IO(watch_QuickSortMaxelerKernel, addressa, IN, STREAM, 8, PUSH)
+MANAGER_NODE_IO(watch_QuickSortMaxelerKernel, reada, IN, STREAM, 32, PUSH)
+MANAGER_NODE_IO(watch_QuickSortMaxelerKernel, addressb, IN, STREAM, 8, PUSH)
+MANAGER_NODE_IO(watch_QuickSortMaxelerKernel, readb, IN, STREAM, 32, PUSH)
+MANAGER_NODE_IO(Stream_1, input, IN, STREAM, 128, PULL)
+MANAGER_NODE_IO(Stream_1, output, OUT, STREAM, 8, PUSH)
+MANAGER_NODE_IO(Stream_4, input, IN, STREAM, 128, PULL)
+MANAGER_NODE_IO(Stream_4, output, OUT, STREAM, 8, PUSH)
+MANAGER_NODE_IO(Stream_9, input, IN, STREAM, 32, PULL)
+MANAGER_NODE_IO(Stream_9, output, OUT, STREAM, 128, PULL)
+MANAGER_NODE_IO(Stream_12, input, IN, STREAM, 32, PULL)
+MANAGER_NODE_IO(Stream_12, output, OUT, STREAM, 128, PULL)
+MANAGER_NODE_IO(Stream_33, input, IN, STREAM, 128, PULL)
+MANAGER_NODE_IO(Stream_33, output, OUT, STREAM, 128, PUSH)
+MANAGER_NODE_IO(Stream_37, input, IN, STREAM, 128, PULL)
+MANAGER_NODE_IO(Stream_37, output, OUT, STREAM, 128, PUSH)
+MANAGER_NODE_IO(Stream_25, input, IN, STREAM, 8, PUSH)
+MANAGER_NODE_IO(Stream_25, output, OUT, STREAM, 8, PULL)
+MANAGER_NODE_IO(Stream_29, input, IN, STREAM, 8, PUSH)
+MANAGER_NODE_IO(Stream_29, output, OUT, STREAM, 8, PULL)
+MANAGER_NODE_IO(Stream_31, input, IN, STREAM, 32, PUSH)
+MANAGER_NODE_IO(Stream_31, output, OUT, STREAM, 32, PULL)
+MANAGER_NODE_IO(Stream_35, input, IN, STREAM, 32, PUSH)
+MANAGER_NODE_IO(Stream_35, output, OUT, STREAM, 32, PULL)
+#endif
+
+#ifdef MANAGER_STREAM
+#define MANAGER_STREAM_PRESENT 1
+MANAGER_STREAM(addressA, addressA, Stream_1, input, 128)
+MANAGER_STREAM(addressB, addressB, Stream_4, input, 128)
+MANAGER_STREAM(QuickSortMaxelerKernel, outputA, Stream_31, input, 32)
+MANAGER_STREAM(QuickSortMaxelerKernel, outputB, Stream_35, input, 32)
+MANAGER_STREAM(QuickSortMaxelerKernel, internal_watch_addressa_output, watch_QuickSortMaxelerKernel, addressa, 8)
+MANAGER_STREAM(QuickSortMaxelerKernel, internal_watch_reada_output, watch_QuickSortMaxelerKernel, reada, 32)
+MANAGER_STREAM(QuickSortMaxelerKernel, internal_watch_addressb_output, watch_QuickSortMaxelerKernel, addressb, 8)
+MANAGER_STREAM(QuickSortMaxelerKernel, internal_watch_readb_output, watch_QuickSortMaxelerKernel, readb, 32)
+MANAGER_STREAM(Stream_1, output, Stream_25, input, 8)
+MANAGER_STREAM(Stream_4, output, Stream_29, input, 8)
+MANAGER_STREAM(Stream_9, output, Stream_33, input, 128)
+MANAGER_STREAM(Stream_12, output, Stream_37, input, 128)
+MANAGER_STREAM(Stream_33, output, outputA, outputA, 128)
+MANAGER_STREAM(Stream_37, output, outputB, outputB, 128)
+MANAGER_STREAM(Stream_25, output, QuickSortMaxelerKernel, addressA, 8)
+MANAGER_STREAM(Stream_29, output, QuickSortMaxelerKernel, addressB, 8)
+MANAGER_STREAM(Stream_31, output, Stream_9, input, 32)
+MANAGER_STREAM(Stream_35, output, Stream_12, input, 32)
+#endif
+
+#ifdef MANAGER_NODE_STACK_TRACE
+#define MANAGER_NODE_STACK_TRACE_PRESENT 1
+MANAGER_NODE_STACK_TRACE(QuickSortMaxelerKernel, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+MANAGER_NODE_STACK_TRACE(addressA, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+MANAGER_NODE_STACK_TRACE(addressB, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+MANAGER_NODE_STACK_TRACE(outputA, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+MANAGER_NODE_STACK_TRACE(outputB, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+MANAGER_NODE_STACK_TRACE(watch_QuickSortMaxelerKernel, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+MANAGER_NODE_STACK_TRACE(Stream_1, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+MANAGER_NODE_STACK_TRACE(Stream_4, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+MANAGER_NODE_STACK_TRACE(Stream_9, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+MANAGER_NODE_STACK_TRACE(Stream_12, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+MANAGER_NODE_STACK_TRACE(Stream_33, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+MANAGER_NODE_STACK_TRACE(Stream_37, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+MANAGER_NODE_STACK_TRACE(Stream_25, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+MANAGER_NODE_STACK_TRACE(Stream_29, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+MANAGER_NODE_STACK_TRACE(Stream_31, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+MANAGER_NODE_STACK_TRACE(Stream_35, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+#endif
+
+#ifdef MANAGER_NODE_NOT_VISIBLE
+#define MANAGER_NODE_NOT_VISIBLE_PRESENT 1
+MANAGER_NODE_NOT_VISIBLE(watch_QuickSortMaxelerKernel)
+#endif
+
+#ifdef MANAGER_NODE_PROPERTY
+#define MANAGER_NODE_PROPERTY_PRESENT 1
+MANAGER_NODE_PROPERTY(QuickSortMaxelerKernel, control_pipelining_depth, 2)
+#endif
+
+
+#ifdef KERNEL_CORE
+#define KERNEL_CORE_PRESENT 1
+KERNEL_CORE(QuickSortMaxelerKernel)
+#endif
+
+#ifdef KERNEL_HOST_CONTROLLED
+#define KERNEL_HOST_CONTROLLED_PRESENT 1
+KERNEL_HOST_CONTROLLED(QuickSortMaxelerKernel, QuickSortMaxelerKernel)
+#endif
+
+#ifdef DEBUG_INPUT_BITS
+#define DEBUG_INPUT_BITS_PRESENT 1
+DEBUG_INPUT_BITS(QuickSortMaxelerKernel, addressA, 0)
+DEBUG_INPUT_BITS(QuickSortMaxelerKernel, addressB, 1)
+#endif
+
+#ifdef DEBUG_OUTPUT_BITS
+#define DEBUG_OUTPUT_BITS_PRESENT 1
+DEBUG_OUTPUT_BITS(QuickSortMaxelerKernel, outputA, 0)
+DEBUG_OUTPUT_BITS(QuickSortMaxelerKernel, outputB, 1)
+#endif
+
+#ifdef MANAGER_NODE_CPP_SIM_MODEL_CTOR
+#define MANAGER_NODE_CPP_SIM_MODEL_CTOR_PRESENT 1
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(addressA, PCIePullSourceSyncMax3, "addressA")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(addressB, PCIePullSourceSyncMax3, "addressB")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_1, DualAspectMuxSync, "Stream_1", 8, 16)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_4, DualAspectMuxSync, "Stream_4", 8, 16)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_25, FifoPushToPullSync, "Stream_25", false, 512, 8)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_29, FifoPushToPullSync, "Stream_29", false, 512, 8)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(QuickSortMaxelerKernel, QuickSortMaxelerKernel, "QuickSortMaxelerKernel")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_31, FifoPushToPullSync, "Stream_31", false, 512, 32)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_35, FifoPushToPullSync, "Stream_35", false, 512, 32)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(watch_QuickSortMaxelerKernel, WatchSync, "watch_QuickSortMaxelerKernel", "QuickSortMaxeler", "QuickSortMaxelerKernel")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_9, DualAspectRegSync, "Stream_9", 32, 4)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_12, DualAspectRegSync, "Stream_12", 32, 4)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_33, PullToPushAdapterSync, "Stream_33")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_37, PullToPushAdapterSync, "Stream_37")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(outputA, PCIePushSinkSyncMax3, "outputA")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(outputB, PCIePushSinkSyncMax3, "outputB")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(CapabilityReg, CapRegs, "CapabilityReg", 0, 2, 2, 0, 0, 0, 0, 0, 37)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(ifpga, IFPGARegs)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(sfa, SFARegs)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(ChecksumMemory, ChecksumMem, "ChecksumMemory", "9c8f2a1a5d9591019c5710697353ad2d84d09347b4857da2a9a4ed358ffdf4ec")
+#endif
+
+#ifdef MANAGER_NODE_CPP_SIM_MODEL_SETUP
+#define MANAGER_NODE_CPP_SIM_MODEL_SETUP_PRESENT 1
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(QuickSortMaxelerKernel, addDebugRegister, reg_dbg_ctld_almost_empty, 2, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(QuickSortMaxelerKernel, addDebugRegister, reg_dbg_ctld_done, 2, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(QuickSortMaxelerKernel, addDebugRegister, reg_dbg_ctld_empty, 2, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(QuickSortMaxelerKernel, addDebugRegister, reg_dbg_ctld_read, 2, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(QuickSortMaxelerKernel, addDebugRegister, reg_dbg_ctld_read_pipe_dbg, 6, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(QuickSortMaxelerKernel, addDebugRegister, reg_dbg_ctld_request, 2, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(QuickSortMaxelerKernel, addDebugRegister, reg_dbg_done_out, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(QuickSortMaxelerKernel, addDebugRegister, reg_dbg_fill_level, 4, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(QuickSortMaxelerKernel, addDebugRegister, reg_dbg_flush_level, 4, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(QuickSortMaxelerKernel, addDebugRegister, reg_dbg_flush_start, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(QuickSortMaxelerKernel, addDebugRegister, reg_dbg_flush_start_level, 4, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(QuickSortMaxelerKernel, addDebugRegister, reg_dbg_flushing, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(QuickSortMaxelerKernel, addDebugRegister, reg_dbg_full_level, 4, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(QuickSortMaxelerKernel, addDebugRegister, reg_dbg_out_stall, 2, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(QuickSortMaxelerKernel, addDebugRegister, reg_dbg_out_valid, 2, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(QuickSortMaxelerKernel, addDebugRegister, reg_dbg_stall_vector, 2, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(watch_QuickSortMaxelerKernel, addInput, "addressa", "addressA", boost::make_shared< DecimalWriter< HWOffsetFix<8,0,UNSIGNED>, false > >())
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(watch_QuickSortMaxelerKernel, addInput, "reada", "readA", boost::make_shared< DecimalWriter< HWFloat<8,24>, false > >())
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(watch_QuickSortMaxelerKernel, addInput, "addressb", "addressB", boost::make_shared< DecimalWriter< HWOffsetFix<8,0,UNSIGNED>, false > >())
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(watch_QuickSortMaxelerKernel, addInput, "readb", "readB", boost::make_shared< DecimalWriter< HWFloat<8,24>, false > >())
+#endif
+
+#ifdef PCIE_STREAM
+#define PCIE_STREAM_PRESENT 1
+PCIE_STREAM(addressA, STREAM_FROM_HOST, 0)
+PCIE_STREAM(addressB, STREAM_FROM_HOST, 1)
+PCIE_STREAM(outputA, STREAM_TO_HOST, 0)
+PCIE_STREAM(outputB, STREAM_TO_HOST, 1)
+#endif
+
+#ifdef REG
+#define REG_PRESENT 1
+REG(QuickSortMaxelerKernel.io_addressA_force_disabled, 0x0, 1, hwOffsetFix(1, 0, UNSIGNED))
+REG(QuickSortMaxelerKernel.io_addressB_force_disabled, 0x1, 1, hwOffsetFix(1, 0, UNSIGNED))
+REG(QuickSortMaxelerKernel.io_outputA_force_disabled, 0x2, 1, hwOffsetFix(1, 0, UNSIGNED))
+REG(QuickSortMaxelerKernel.io_outputB_force_disabled, 0x3, 1, hwOffsetFix(1, 0, UNSIGNED))
+REG(QuickSortMaxelerKernel.run_cycle_count, 0x4, 6, hwOffsetFix(48, 0, UNSIGNED))
+REG(QuickSortMaxelerKernel.current_run_cycle_count, 0xa, 6, hwOffsetFix(48, 0, UNSIGNED))
+REG(QuickSortMaxelerKernel.dbg_ctld_almost_empty, 0x10, 1, hwBits(2))
+REG(QuickSortMaxelerKernel.dbg_ctld_done, 0x11, 1, hwBits(2))
+REG(QuickSortMaxelerKernel.dbg_ctld_empty, 0x12, 1, hwBits(2))
+REG(QuickSortMaxelerKernel.dbg_ctld_read, 0x13, 1, hwBits(2))
+REG(QuickSortMaxelerKernel.dbg_ctld_read_pipe_dbg, 0x14, 1, hwBits(6))
+REG(QuickSortMaxelerKernel.dbg_ctld_request, 0x15, 1, hwBits(2))
+REG(QuickSortMaxelerKernel.dbg_done_out, 0x16, 1, hwBits(1))
+REG(QuickSortMaxelerKernel.dbg_fill_level, 0x17, 1, hwBits(4))
+REG(QuickSortMaxelerKernel.dbg_flush_level, 0x18, 1, hwBits(4))
+REG(QuickSortMaxelerKernel.dbg_flush_start, 0x19, 1, hwBits(1))
+REG(QuickSortMaxelerKernel.dbg_flush_start_level, 0x1a, 1, hwBits(4))
+REG(QuickSortMaxelerKernel.dbg_flushing, 0x1b, 1, hwBits(1))
+REG(QuickSortMaxelerKernel.dbg_full_level, 0x1c, 1, hwBits(4))
+REG(QuickSortMaxelerKernel.dbg_out_stall, 0x1d, 1, hwBits(2))
+REG(QuickSortMaxelerKernel.dbg_out_valid, 0x1e, 1, hwBits(2))
+REG(QuickSortMaxelerKernel.dbg_stall_vector, 0x1f, 1, hwBits(2))
+REG(ifpga.ifpga_ctrl, 0x20, 1, hwBits(8))
+REG(SignalForwardingAdapter.SFA_FORWARD_EN, 0x21, 4, hwBits(32))
+#endif
+
+#ifdef REG_V2
+#define REG_V2_PRESENT 1
+REG_V2(QuickSortMaxelerKernel.io_addressA_force_disabled, 0x0, 1, hwOffsetFix(1, 0, UNSIGNED), HOST_WRITE_ONLY, true)
+REG_V2(QuickSortMaxelerKernel.io_addressB_force_disabled, 0x1, 1, hwOffsetFix(1, 0, UNSIGNED), HOST_WRITE_ONLY, true)
+REG_V2(QuickSortMaxelerKernel.io_outputA_force_disabled, 0x2, 1, hwOffsetFix(1, 0, UNSIGNED), HOST_WRITE_ONLY, true)
+REG_V2(QuickSortMaxelerKernel.io_outputB_force_disabled, 0x3, 1, hwOffsetFix(1, 0, UNSIGNED), HOST_WRITE_ONLY, true)
+REG_V2(QuickSortMaxelerKernel.run_cycle_count, 0x4, 6, hwOffsetFix(48, 0, UNSIGNED), HOST_WRITE_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.current_run_cycle_count, 0xa, 6, hwOffsetFix(48, 0, UNSIGNED), HOST_READ_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.dbg_ctld_almost_empty, 0x10, 1, hwBits(2), HOST_READ_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.dbg_ctld_done, 0x11, 1, hwBits(2), HOST_READ_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.dbg_ctld_empty, 0x12, 1, hwBits(2), HOST_READ_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.dbg_ctld_read, 0x13, 1, hwBits(2), HOST_READ_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.dbg_ctld_read_pipe_dbg, 0x14, 1, hwBits(6), HOST_READ_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.dbg_ctld_request, 0x15, 1, hwBits(2), HOST_READ_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.dbg_done_out, 0x16, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.dbg_fill_level, 0x17, 1, hwBits(4), HOST_READ_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.dbg_flush_level, 0x18, 1, hwBits(4), HOST_READ_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.dbg_flush_start, 0x19, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.dbg_flush_start_level, 0x1a, 1, hwBits(4), HOST_READ_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.dbg_flushing, 0x1b, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.dbg_full_level, 0x1c, 1, hwBits(4), HOST_READ_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.dbg_out_stall, 0x1d, 1, hwBits(2), HOST_READ_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.dbg_out_valid, 0x1e, 1, hwBits(2), HOST_READ_ONLY, false)
+REG_V2(QuickSortMaxelerKernel.dbg_stall_vector, 0x1f, 1, hwBits(2), HOST_READ_ONLY, false)
+REG_V2(ifpga.ifpga_ctrl, 0x20, 1, hwBits(8), HOST_READ_WRITE, false)
+REG_V2(SignalForwardingAdapter.SFA_FORWARD_EN, 0x21, 4, hwBits(32), HOST_READ_WRITE, false)
+#endif
+
+
+#ifdef MEM2
+#define MEM2_PRESENT 1
+MEM2(QuickSortMaxelerKernel.mappedRom, 0x400000, hwFloat(8, 24))
+#endif
+
+#ifdef MEM_DEPTH
+#define MEM_DEPTH_PRESENT 1
+MEM_DEPTH(QuickSortMaxelerKernel.mappedRom, 256)
+#endif
+
+#ifdef CHECKSUM
+#define CHECKSUM_PRESENT 1
+CHECKSUM("9c8f2a1a5d9591019c5710697353ad2d84d09347b4857da2a9a4ed358ffdf4ec")
+#endif
+
+#ifdef CAPABILITY
+#define CAPABILITY_PRESENT 1
+CAPABILITY(MAX3REV, MAX3REVA)
+CAPABILITY(MAX3RAM, DDR3_24GB)
+CAPABILITY(MAX3FPGA, SXT475_2ES)
+#endif
+
+#ifdef DEFINE_DESIGN_NAME
+#define DESIGN_NAME QuickSortMaxeler
+#endif /* DEFINE_DESIGN_NAME */
+
+#ifdef WATCH_STREAMS
+#define WATCH_STREAMS_PRESENT 1
+WATCH_STREAMS(QuickSortMaxelerKernel, internal_watch_addressa_output)
+WATCH_STREAMS(QuickSortMaxelerKernel, internal_watch_reada_output)
+WATCH_STREAMS(QuickSortMaxelerKernel, internal_watch_addressb_output)
+WATCH_STREAMS(QuickSortMaxelerKernel, internal_watch_readb_output)
+#endif
+
+#ifdef WATCHNODE
+#define WATCHNODE_PRESENT 1
+WATCHNODE(QuickSortMaxelerKernel, addressA, java.lang.Thread.getStackTrace(Thread.java:1479)/com.maxeler.photon.nodes.NodeWatch.addInput(NodeWatch.java:324)/com.maxeler.photon.libs.WatchFactory.watch(WatchFactory.java:136)/com.maxeler.photon.libs.WatchFactory.watch(WatchFactory.java:131)/com.maxeler.photon.libs.WatchFactory.watch(WatchFactory.java:127)/com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.simWatch(DFEVar.java:1096)/quicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:28)/quicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14))
+WATCHNODE(QuickSortMaxelerKernel, readA, java.lang.Thread.getStackTrace(Thread.java:1479)/com.maxeler.photon.nodes.NodeWatch.addInput(NodeWatch.java:324)/com.maxeler.photon.libs.WatchFactory.watch(WatchFactory.java:136)/com.maxeler.photon.libs.WatchFactory.watch(WatchFactory.java:131)/com.maxeler.photon.libs.WatchFactory.watch(WatchFactory.java:127)/com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.simWatch(DFEVar.java:1096)/quicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:29)/quicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14))
+WATCHNODE(QuickSortMaxelerKernel, addressB, java.lang.Thread.getStackTrace(Thread.java:1479)/com.maxeler.photon.nodes.NodeWatch.addInput(NodeWatch.java:324)/com.maxeler.photon.libs.WatchFactory.watch(WatchFactory.java:136)/com.maxeler.photon.libs.WatchFactory.watch(WatchFactory.java:131)/com.maxeler.photon.libs.WatchFactory.watch(WatchFactory.java:127)/com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.simWatch(DFEVar.java:1096)/quicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:30)/quicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14))
+WATCHNODE(QuickSortMaxelerKernel, readB, java.lang.Thread.getStackTrace(Thread.java:1479)/com.maxeler.photon.nodes.NodeWatch.addInput(NodeWatch.java:324)/com.maxeler.photon.libs.WatchFactory.watch(WatchFactory.java:136)/com.maxeler.photon.libs.WatchFactory.watch(WatchFactory.java:131)/com.maxeler.photon.libs.WatchFactory.watch(WatchFactory.java:127)/com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.simWatch(DFEVar.java:1096)/quicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:31)/quicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14))
+#endif
+
+#ifndef SLIC_NO_DECLARATIONS
+/**\file */
+#ifndef SLIC_DECLARATIONS_QuickSortMaxeler_H
+#define SLIC_DECLARATIONS_QuickSortMaxeler_H
+#include "MaxSLiCInterface.h"
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
+#define QuickSortMaxeler_PCIE_ALIGNMENT (16)
+
+
+/*----------------------------------------------------------------------------*/
+/*---------------------------- Interface default -----------------------------*/
+/*----------------------------------------------------------------------------*/
+
+
+
+
+/**
+ * \brief Basic static function for the interface 'default'.
+ * 
+ * \param [in] param_N Interface Parameter "N".: Number of data items to process
+ * \param [in] instream_addressA The stream should be of size (param_N * 1) bytes.
+ * \param [in] instream_addressB The stream should be of size (param_N * 1) bytes.
+ * \param [out] outstream_outputA The stream should be of size (param_N * 4) bytes.
+ * \param [out] outstream_outputB The stream should be of size (param_N * 4) bytes.
+ * \param [in] inmem_QuickSortMaxelerKernel_mappedRom Mapped ROM inmem_QuickSortMaxelerKernel_mappedRom, should be of size (256 * sizeof(double)).
+ */
+void QuickSortMaxeler(
+	int32_t param_N,
+	const uint8_t *instream_addressA,
+	const uint8_t *instream_addressB,
+	float *outstream_outputA,
+	float *outstream_outputB,
+	const double *inmem_QuickSortMaxelerKernel_mappedRom);
+
+/**
+ * \brief Basic static non-blocking function for the interface 'default'.
+ * 
+ * Schedule to run on an engine and return immediately.
+ * The status of the run can be checked either by ::max_wait or ::max_nowait;
+ * note that one of these *must* be called, so that associated memory can be released.
+ * 
+ * 
+ * \param [in] param_N Interface Parameter "N".: Number of data items to process
+ * \param [in] instream_addressA The stream should be of size (param_N * 1) bytes.
+ * \param [in] instream_addressB The stream should be of size (param_N * 1) bytes.
+ * \param [out] outstream_outputA The stream should be of size (param_N * 4) bytes.
+ * \param [out] outstream_outputB The stream should be of size (param_N * 4) bytes.
+ * \param [in] inmem_QuickSortMaxelerKernel_mappedRom Mapped ROM inmem_QuickSortMaxelerKernel_mappedRom, should be of size (256 * sizeof(double)).
+ * \return A handle on the execution status, or NULL in case of error.
+ */
+max_run_t *QuickSortMaxeler_nonblock(
+	int32_t param_N,
+	const uint8_t *instream_addressA,
+	const uint8_t *instream_addressB,
+	float *outstream_outputA,
+	float *outstream_outputB,
+	const double *inmem_QuickSortMaxelerKernel_mappedRom);
+
+/**
+ * \brief Advanced static interface, structure for the engine interface 'default'
+ * 
+ */
+typedef struct { 
+	int32_t param_N; /**<  [in] Interface Parameter "N".: Number of data items to process */
+	const uint8_t *instream_addressA; /**<  [in] The stream should be of size (param_N * 1) bytes. */
+	const uint8_t *instream_addressB; /**<  [in] The stream should be of size (param_N * 1) bytes. */
+	float *outstream_outputA; /**<  [out] The stream should be of size (param_N * 4) bytes. */
+	float *outstream_outputB; /**<  [out] The stream should be of size (param_N * 4) bytes. */
+	const double *inmem_QuickSortMaxelerKernel_mappedRom; /**<  [in] Mapped ROM inmem_QuickSortMaxelerKernel_mappedRom, should be of size (256 * sizeof(double)). */
+} QuickSortMaxeler_actions_t;
+
+/**
+ * \brief Advanced static function for the interface 'default'.
+ * 
+ * \param [in] engine The engine on which the actions will be executed.
+ * \param [in,out] interface_actions Actions to be executed.
+ */
+void QuickSortMaxeler_run(
+	max_engine_t *engine,
+	QuickSortMaxeler_actions_t *interface_actions);
+
+/**
+ * \brief Advanced static non-blocking function for the interface 'default'.
+ *
+ * Schedule the actions to run on the engine and return immediately.
+ * The status of the run can be checked either by ::max_wait or ::max_nowait;
+ * note that one of these *must* be called, so that associated memory can be released.
+ *
+ * 
+ * \param [in] engine The engine on which the actions will be executed.
+ * \param [in] interface_actions Actions to be executed.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *QuickSortMaxeler_run_nonblock(
+	max_engine_t *engine,
+	QuickSortMaxeler_actions_t *interface_actions);
+
+/**
+ * \brief Group run advanced static function for the interface 'default'.
+ * 
+ * \param [in] group Group to use.
+ * \param [in,out] interface_actions Actions to run.
+ *
+ * Run the actions on the first device available in the group.
+ */
+void QuickSortMaxeler_run_group(max_group_t *group, QuickSortMaxeler_actions_t *interface_actions);
+
+/**
+ * \brief Group run advanced static non-blocking function for the interface 'default'.
+ * 
+ *
+ * Schedule the actions to run on the first device available in the group and return immediately.
+ * The status of the run must be checked with ::max_wait. 
+ * Note that use of ::max_nowait is prohibited with non-blocking running on groups:
+ * see the ::max_run_group_nonblock documentation for more explanation.
+ *
+ * \param [in] group Group to use.
+ * \param [in] interface_actions Actions to run.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *QuickSortMaxeler_run_group_nonblock(max_group_t *group, QuickSortMaxeler_actions_t *interface_actions);
+
+/**
+ * \brief Array run advanced static function for the interface 'default'.
+ * 
+ * \param [in] engarray The array of devices to use.
+ * \param [in,out] interface_actions The array of actions to run.
+ *
+ * Run the array of actions on the array of engines.  The length of interface_actions
+ * must match the size of engarray.
+ */
+void QuickSortMaxeler_run_array(max_engarray_t *engarray, QuickSortMaxeler_actions_t *interface_actions[]);
+
+/**
+ * \brief Array run advanced static non-blocking function for the interface 'default'.
+ * 
+ *
+ * Schedule to run the array of actions on the array of engines, and return immediately.
+ * The length of interface_actions must match the size of engarray.
+ * The status of the run can be checked either by ::max_wait or ::max_nowait;
+ * note that one of these *must* be called, so that associated memory can be released.
+ *
+ * \param [in] engarray The array of devices to use.
+ * \param [in] interface_actions The array of actions to run.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *QuickSortMaxeler_run_array_nonblock(max_engarray_t *engarray, QuickSortMaxeler_actions_t *interface_actions[]);
+
+/**
+ * \brief Converts a static-interface action struct into a dynamic-interface max_actions_t struct.
+ *
+ * Note that this is an internal utility function used by other functions in the static interface.
+ *
+ * \param [in] maxfile The maxfile to use.
+ * \param [in] interface_actions The interface-specific actions to run.
+ * \return The dynamic-interface actions to run, or NULL in case of error.
+ */
+max_actions_t* QuickSortMaxeler_convert(max_file_t *maxfile, QuickSortMaxeler_actions_t *interface_actions);
+
+/**
+ * \brief Initialise a maxfile.
+ */
+max_file_t* QuickSortMaxeler_init(void);
+
+/* Error handling functions */
+int QuickSortMaxeler_has_errors(void);
+const char* QuickSortMaxeler_get_errors(void);
+void QuickSortMaxeler_clear_errors(void);
+/* Free statically allocated maxfile data */
+void QuickSortMaxeler_free(void);
+/* returns: -1 = error running command; 0 = no error reported */
+int QuickSortMaxeler_simulator_start(void);
+/* returns: -1 = error running command; 0 = no error reported */
+int QuickSortMaxeler_simulator_stop(void);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+#endif /* SLIC_DECLARATIONS_QuickSortMaxeler_H */
+
+#endif /* SLIC_NO_DECLARATIONS */
+
+#ifdef PHOTON_NODE_DATA
+#define PHOTON_NODE_DATA_PRESENT 1
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 30, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 0, NodeInputMappedReg, "Scalar input (io_addressA_force_disabled)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:606)\nquicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:17)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 1, NodeNot, "~", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:606)\nquicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:17)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 2, NodeInput, "Input(addressA)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:606)\nquicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:17)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 35, NodeFIFO, "FIFO(2)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 31, NodeOutput, "Output(internal_watch_addressa_output)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 3, NodeInputMappedReg, "Scalar input (io_addressB_force_disabled)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:606)\nquicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:18)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 4, NodeNot, "~", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:606)\nquicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:18)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 5, NodeInput, "Input(addressB)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:606)\nquicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:18)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 17, NodeMappedRom, "MappedRom 'mappedRom':\n{HWFloat:8, 24} x 256", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Mem.alloc(Mem.java:67)\nquicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:21)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 32, NodeOutput, "Output(internal_watch_reada_output)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 36, NodeFIFO, "FIFO(2)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 33, NodeOutput, "Output(internal_watch_addressb_output)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 34, NodeOutput, "Output(internal_watch_readb_output)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 6, NodeWatch, "WatchNode", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.simWatch(DFEVar.java:1096)\nquicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:28)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 8, NodeInputMappedReg, "Scalar input (io_outputA_force_disabled)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:816)\nquicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:33)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 9, NodeNot, "~", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:816)\nquicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:33)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 11, NodeOutput, "Output(outputA)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:816)\nquicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:33)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 13, NodeInputMappedReg, "Scalar input (io_outputB_force_disabled)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:816)\nquicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:34)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 14, NodeNot, "~", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:816)\nquicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:34)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 16, NodeOutput, "Output(outputB)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:816)\nquicksortmaxeler.QuickSortMaxelerKernel.<init>(QuickSortMaxelerKernel.maxj:34)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:14)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 22, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 38, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 19, NodeConstantRawBits, "{HWOffsetFix:49, 0, UNSIGNED}\n0x1000000000000; 2.81474976710656E14", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 20, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 21, NodeStreamOffset, "stream offset: 1", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 23, NodeOutputMappedReg, "Scalar output (current_run_cycle_count)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 37, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 25, NodeConstantRawBits, "{HWOffsetFix:49, 0, UNSIGNED}\n0x1000000000000; 2.81474976710656E14", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 26, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 28, NodeInputMappedReg, "Scalar input (run_cycle_count)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 29, NodeEq, "==", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+PHOTON_NODE_DATA(QuickSortMaxelerKernel, 27, NodeFlush, "flush on trigger", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:362)\nquicksortmaxeler.QuickSortMaxelerManager.main(QuickSortMaxelerManager.maxj:18)\n")
+#endif
+
+#ifdef SLIC_USE_DEFINITIONS
+#include <stdio.h>
+#include <math.h>
+#include <pthread.h>
+#include <string.h>
+#include <unistd.h>
+#include <stdlib.h>
+static max_file_t *stored_maxfile = NULL;
+static max_engine_t *stored_engine = NULL;
+static char *stored_error = NULL;
+static int stored_has_error = 0;
+static pthread_once_t slic_bs_is_initialised = PTHREAD_ONCE_INIT;
+
+static void set_error(const char *error_str)
+{
+	stored_has_error = 1; 
+	if(stored_error == NULL) {
+		stored_error = strdup(error_str);
+	} else {
+		char *nerr = malloc(strlen(stored_error) + strlen(error_str) + 2);
+		sprintf(nerr, "%s\n%s", stored_error, error_str);
+		free(stored_error);
+		stored_error = nerr;
+	}
+}
+static void set_error_and_free(char *error_str){
+	set_error(error_str);
+	free(error_str);
+}
+int QuickSortMaxeler_has_errors(void)
+{	return stored_has_error; }
+const char* QuickSortMaxeler_get_errors(void)
+{	return stored_error; }
+void QuickSortMaxeler_clear_errors(void)
+{
+	free(stored_error);
+	stored_error = NULL;
+	stored_has_error = 0;
+}
+
+static char QuickSortMaxeler_use_simulation[16];
+static void QuickSortMaxeler_def_use_simulation(void)
+{
+	long pid = ((long) getpid()) % 100000;
+	snprintf(QuickSortMaxeler_use_simulation, 16, "QuickSor_%05ld_", pid);
+}
+static const char *QuickSortMaxeler_check_use_simulation(void)
+{
+	QuickSortMaxeler_def_use_simulation();
+	const char *use_sim = max_config_get_string(MAX_CONFIG_USE_SIMULATION);
+	if (use_sim == NULL) {
+		use_sim = QuickSortMaxeler_use_simulation;
+		max_config_set_string(MAX_CONFIG_USE_SIMULATION, use_sim);
+	}
+	return use_sim;
+}
+
+static int QuickSortMaxeler_simulation_launch = 0;
+int QuickSortMaxeler_simulator_start(void)
+{
+	int retval = 0;
+	const char *use_sim = QuickSortMaxeler_check_use_simulation();
+	char buff[1024];
+	snprintf(buff, 1024, "PATH=simutils:$PATH maxcompilersim -d 1 -n %s -c MAX3424A -S simutils restart", use_sim);
+	FILE *pipe_fp = popen(buff, "r");
+	if (pipe_fp == NULL) {
+		strncat(buff, " : failed to execute.", (1024 - strlen(buff)));
+		set_error(buff);
+		return -1;
+	}
+	while (fgets(buff, 1024, pipe_fp) != NULL) {
+		/* Uncomment this to get simulator command output */
+		/* fprintf(stderr, buff); */
+		if (strstr(buff, "Error")) {
+			set_error(buff);
+			retval = -1;
+		}
+	}
+	pclose(pipe_fp);
+	return retval;
+}
+
+int QuickSortMaxeler_simulator_stop(void)
+{
+	const char *use_sim = QuickSortMaxeler_check_use_simulation();
+	char buff[1024];
+	snprintf(buff, 1024, "PATH=simutils:$PATH maxcompilersim -d 1 -n %s -c MAX3424A -S simutils stop", use_sim);
+	FILE *pipe_fp = popen(buff, "r");
+	if (pipe_fp == NULL) {
+		strncat(buff, " : failed to execute.", (1024 - strlen(buff)));
+		set_error(buff);
+		return -1;
+	}
+	while (fgets(buff, 1024, pipe_fp) != NULL) {
+		/* Uncomment this to get simulator command output */
+		/* fprintf(stderr, buff); */
+		;
+	}
+	pclose(pipe_fp);
+	return 0;
+}
+
+static void QuickSortMaxeler_static_init(void) 
+{
+	stored_maxfile = QuickSortMaxeler_init();
+	if (stored_maxfile == NULL || !max_ok(stored_maxfile->errors)) {
+		stored_maxfile = NULL;
+		if(max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR)) abort();
+		else { set_error("Unable to load maxfile"); return; }
+	}
+	if(!max_ok(max_global_errors())) {
+		set_error_and_free(max_errors_trace(max_global_errors()));
+		return;
+	}
+	if(!max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR))
+		max_errors_mode(stored_maxfile->errors, 0);
+	time_t timeout_previous = max_load_timeout(stored_maxfile, 30);
+	const char *use_sim = QuickSortMaxeler_check_use_simulation();
+	if (max_ping_daemon(stored_maxfile, use_sim) == 0) {
+		int sim_stat = QuickSortMaxeler_simulator_start();
+		if ((sim_stat == 0) && (max_ping_daemon(stored_maxfile, use_sim) == 1)) {
+			QuickSortMaxeler_simulation_launch = 1;
+		} else {
+			set_error("Error: An error occurred while trying to start the simulation infrastructure automatically.");
+			set_error("Error: Check that 'use_simulation=<simulator_name>' is set correctly in your SLiC configuration");
+			set_error("Error: and that the associated simulated system daemon is running.");
+			max_file_free(stored_maxfile);
+			stored_maxfile = NULL;
+			return;
+		}
+	}
+	stored_engine = max_load(stored_maxfile, "*");
+	if (!max_ok(stored_maxfile->errors)) {
+		if(max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR)) {
+			fprintf(stderr, "\nUnable to load engine: aborting now.\n\n");
+			fflush(stderr);
+			abort();
+		} else {
+			set_error_and_free(max_errors_trace(stored_maxfile->errors));
+			max_file_free(stored_maxfile);
+			stored_maxfile = NULL;
+			return;
+		} 
+	} 
+	max_load_timeout(stored_maxfile, timeout_previous);
+}
+void QuickSortMaxeler_free(void)
+{
+	if (stored_engine != NULL) {
+		max_unload(stored_engine);
+		stored_engine = NULL;
+	}
+	if (stored_maxfile != NULL) {
+		max_file_free(stored_maxfile);
+		stored_maxfile = NULL;
+	}
+	if (stored_error != NULL) {
+		free(stored_error);
+		stored_error = NULL;
+	}
+	if (QuickSortMaxeler_simulation_launch == 1) {
+		int sim_stat = QuickSortMaxeler_simulator_stop();
+		if (sim_stat != 0 ) {
+			fprintf(stderr, "Error stopping simulator.");
+		}
+		QuickSortMaxeler_simulation_launch = 0;
+	}
+}
+
+static int QuickSortMaxeler_get_pcie_alignment(void)
+{
+#ifdef QuickSortMaxeler_PCIE_ALIGNMENT
+	return ((QuickSortMaxeler_PCIE_ALIGNMENT < 1) ? 16 : QuickSortMaxeler_PCIE_ALIGNMENT);
+#else
+	return 16;
+#endif
+}
+
+static int QuickSortMaxeler_check_aligned(const void *data)
+{
+	uintptr_t pointer = (uintptr_t) data;
+	int alignment = QuickSortMaxeler_get_pcie_alignment();
+	return (pointer % alignment) ? 1 : 0;
+}
+
+static void *QuickSortMaxeler_malloc_aligned(const size_t size)
+{
+	void *ptr;
+	int alignment = QuickSortMaxeler_get_pcie_alignment();
+	posix_memalign(&ptr, alignment, size);
+	return ptr;
+}
+
+
+
+/*----------------------------------------------------------------------------*/
+/*---------------------------- Interface default -----------------------------*/
+/*----------------------------------------------------------------------------*/
+
+
+
+#define CHECK_ERRORS_ST(ST, RET) if(!max_ok(ST->errors)) { if(max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR)) { fprintf(stderr, "%s\n", max_errors_trace(ST->errors)); abort(); } set_error_and_free(max_errors_trace(ST->errors)); return RET; } 
+#define CHECK_NULL(VALUE, MESSAGE, RET) if(VALUE == NULL) { if (max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR)) { fprintf(stderr, "%s\n%s\n", (stored_error == NULL) ? "" : stored_error, MESSAGE); abort(); } set_error(MESSAGE); return RET; }
+
+ 
+typedef struct QuickSortMaxeler_callback_stream {
+	uint8_t *user_ptr;
+	uint8_t *aligned_ptr;
+	size_t   size;
+	int      is_output;
+} QuickSortMaxeler_callback_stream_t;
+
+typedef struct QuickSortMaxeler_callback_data {
+	QuickSortMaxeler_callback_stream_t stream[4]; 
+	int count;
+	int max_count;
+} QuickSortMaxeler_callback_data_t;
+
+static void QuickSortMaxeler_callback_internal(void *cb_data)
+{
+	QuickSortMaxeler_callback_data_t *data = (QuickSortMaxeler_callback_data_t*) cb_data;
+	for (int i = 0 ; i < data->count ; i++ ) {
+		QuickSortMaxeler_callback_stream_t *s = &data->stream[i];
+		if (s->is_output && (s->size > 0)) {
+			memcpy(s->user_ptr, s->aligned_ptr, s->size);
+		}
+		free(s->aligned_ptr);
+	}
+	free(data);
+}
+
+static max_actions_t* QuickSortMaxeler_convert_internal(
+	max_file_t *maxfile,
+	QuickSortMaxeler_actions_t *interface_actions,
+	int  is_internal_call,
+	void (**callback_func)(void*),
+	void **callback_data)
+{
+	max_actions_t *actions = max_actions_init(maxfile, NULL);
+	if(actions == NULL) return NULL;
+
+#define CHECK_ERRORS if(!max_ok(actions->errors)) { set_error_and_free(max_errors_trace(actions->errors)); return NULL; } 
+
+	QuickSortMaxeler_callback_data_t *cb_data = NULL;
+	int use_callback = (callback_func != NULL) && (callback_data != NULL);
+	if (use_callback) {
+		cb_data = malloc(sizeof(QuickSortMaxeler_callback_data_t));
+		if (cb_data == NULL) {
+			fprintf(stderr, "Unable to allocate memory for stream callback data in function QuickSortMaxeler_convert_internal\n");
+			return NULL;
+		}
+		cb_data->max_count = 4;
+		cb_data->count     = 0;
+		*callback_data     = cb_data;
+		*callback_func     = &QuickSortMaxeler_callback_internal;
+	}
+
+	int32_t param_N = interface_actions->param_N;
+	
+	/* code for scalar QuickSortMaxelerKernel.run_cycle_count */
+	uint64_t ticks_QuickSortMaxelerKernel = param_N;
+	max_set_ticks(actions, "QuickSortMaxelerKernel", param_N);
+	CHECK_ERRORS;
+	/* end of code for scalar QuickSortMaxelerKernel.run_cycle_count*/
+	
+	int64_t tmp_0 = (param_N * 1);
+	
+	/* code for stream addressA */
+	size_t instream_size_addressA = tmp_0;
+	if (instream_size_addressA > 0) {
+		const uint8_t *stream_ptr = interface_actions->instream_addressA;
+		if (use_callback && (1 == QuickSortMaxeler_check_aligned(interface_actions->instream_addressA))) {
+			uint8_t *aligned_instream_addressA = malloc(instream_size_addressA);
+			if (aligned_instream_addressA == NULL) {
+				max_report_error_slic(actions->errors, __FILE__, __LINE__, 526, "Failed to allocate aligned memory for stream 'addressA'");
+				CHECK_ERRORS;
+			}
+			(&cb_data->stream[cb_data->count])->user_ptr    = (uint8_t*) interface_actions->instream_addressA;
+			(&cb_data->stream[cb_data->count])->aligned_ptr = (uint8_t*) aligned_instream_addressA;
+			(&cb_data->stream[cb_data->count])->size        = instream_size_addressA;
+			(&cb_data->stream[cb_data->count])->is_output   = 0;
+			cb_data->count += 1;
+			memcpy(aligned_instream_addressA, interface_actions->instream_addressA, instream_size_addressA);
+			stream_ptr = aligned_instream_addressA;
+		}
+		max_queue_input(actions, "addressA", stream_ptr, instream_size_addressA);
+		CHECK_ERRORS;
+	}
+	/* end of code for stream addressA */
+	
+	int64_t tmp_1 = (param_N * 1);
+	
+	/* code for stream addressB */
+	size_t instream_size_addressB = tmp_1;
+	if (instream_size_addressB > 0) {
+		const uint8_t *stream_ptr = interface_actions->instream_addressB;
+		if (use_callback && (1 == QuickSortMaxeler_check_aligned(interface_actions->instream_addressB))) {
+			uint8_t *aligned_instream_addressB = malloc(instream_size_addressB);
+			if (aligned_instream_addressB == NULL) {
+				max_report_error_slic(actions->errors, __FILE__, __LINE__, 526, "Failed to allocate aligned memory for stream 'addressB'");
+				CHECK_ERRORS;
+			}
+			(&cb_data->stream[cb_data->count])->user_ptr    = (uint8_t*) interface_actions->instream_addressB;
+			(&cb_data->stream[cb_data->count])->aligned_ptr = (uint8_t*) aligned_instream_addressB;
+			(&cb_data->stream[cb_data->count])->size        = instream_size_addressB;
+			(&cb_data->stream[cb_data->count])->is_output   = 0;
+			cb_data->count += 1;
+			memcpy(aligned_instream_addressB, interface_actions->instream_addressB, instream_size_addressB);
+			stream_ptr = aligned_instream_addressB;
+		}
+		max_queue_input(actions, "addressB", stream_ptr, instream_size_addressB);
+		CHECK_ERRORS;
+	}
+	/* end of code for stream addressB */
+	
+	int64_t tmp_2 = (param_N * 4);
+	
+	/* code for stream outputA */
+	size_t outstream_size_outputA = tmp_2;
+	if (outstream_size_outputA > 0) {
+		float *stream_ptr = interface_actions->outstream_outputA;
+		if (use_callback && (1 == QuickSortMaxeler_check_aligned(interface_actions->outstream_outputA))) {
+			float *aligned_outstream_outputA = malloc(outstream_size_outputA);
+			if (aligned_outstream_outputA == NULL) {
+				max_report_error_slic(actions->errors, __FILE__, __LINE__, 526, "Failed to allocate aligned memory for stream 'outputA'");
+				CHECK_ERRORS;
+			}
+			(&cb_data->stream[cb_data->count])->user_ptr    = (uint8_t*) interface_actions->outstream_outputA;
+			(&cb_data->stream[cb_data->count])->aligned_ptr = (uint8_t*) aligned_outstream_outputA;
+			(&cb_data->stream[cb_data->count])->size        = outstream_size_outputA;
+			(&cb_data->stream[cb_data->count])->is_output   = 1;
+			cb_data->count += 1;
+			stream_ptr = aligned_outstream_outputA;
+		}
+		max_queue_output(actions, "outputA", stream_ptr, outstream_size_outputA);
+		CHECK_ERRORS;
+	}
+	/* end of code for stream outputA */
+	
+	int64_t tmp_3 = (param_N * 4);
+	
+	/* code for stream outputB */
+	size_t outstream_size_outputB = tmp_3;
+	if (outstream_size_outputB > 0) {
+		float *stream_ptr = interface_actions->outstream_outputB;
+		if (use_callback && (1 == QuickSortMaxeler_check_aligned(interface_actions->outstream_outputB))) {
+			float *aligned_outstream_outputB = malloc(outstream_size_outputB);
+			if (aligned_outstream_outputB == NULL) {
+				max_report_error_slic(actions->errors, __FILE__, __LINE__, 526, "Failed to allocate aligned memory for stream 'outputB'");
+				CHECK_ERRORS;
+			}
+			(&cb_data->stream[cb_data->count])->user_ptr    = (uint8_t*) interface_actions->outstream_outputB;
+			(&cb_data->stream[cb_data->count])->aligned_ptr = (uint8_t*) aligned_outstream_outputB;
+			(&cb_data->stream[cb_data->count])->size        = outstream_size_outputB;
+			(&cb_data->stream[cb_data->count])->is_output   = 1;
+			cb_data->count += 1;
+			stream_ptr = aligned_outstream_outputB;
+		}
+		max_queue_output(actions, "outputB", stream_ptr, outstream_size_outputB);
+		CHECK_ERRORS;
+	}
+	/* end of code for stream outputB */
+	
+	max_set_mem_range_double(actions, "QuickSortMaxelerKernel", "mappedRom", 0, 256, interface_actions->inmem_QuickSortMaxelerKernel_mappedRom);
+	CHECK_ERRORS;
+	
+	if (use_callback && cb_data->count == 0) {
+		*callback_data = NULL;
+		*callback_func = NULL;
+		free(cb_data);
+	}
+	return actions;
+#undef CHECK_ERRORS
+}
+
+void QuickSortMaxeler(
+	int32_t param_N,
+	const uint8_t *instream_addressA,
+	const uint8_t *instream_addressB,
+	float *outstream_outputA,
+	float *outstream_outputB,
+	const double *inmem_QuickSortMaxelerKernel_mappedRom)
+{
+	(void) pthread_once(&slic_bs_is_initialised, QuickSortMaxeler_static_init);
+	CHECK_NULL(stored_maxfile, "Maxfile was not loaded", );
+	max_run_t *run = QuickSortMaxeler_nonblock(param_N, instream_addressA, instream_addressB, outstream_outputA, outstream_outputB, inmem_QuickSortMaxelerKernel_mappedRom);
+	CHECK_NULL(run, "Unable to run actions", );
+	max_wait(run);
+}
+
+max_run_t *QuickSortMaxeler_nonblock(
+	int32_t param_N,
+	const uint8_t *instream_addressA,
+	const uint8_t *instream_addressB,
+	float *outstream_outputA,
+	float *outstream_outputB,
+	const double *inmem_QuickSortMaxelerKernel_mappedRom)
+{
+	QuickSortMaxeler_actions_t interface_actions;
+	interface_actions.param_N = param_N;
+	interface_actions.instream_addressA = instream_addressA;
+	interface_actions.instream_addressB = instream_addressB;
+	interface_actions.outstream_outputA = outstream_outputA;
+	interface_actions.outstream_outputB = outstream_outputB;
+	interface_actions.inmem_QuickSortMaxelerKernel_mappedRom = inmem_QuickSortMaxelerKernel_mappedRom;
+	(void) pthread_once(&slic_bs_is_initialised, QuickSortMaxeler_static_init);
+	CHECK_NULL(stored_maxfile, "Maxfile was not loaded", NULL);
+	void (*cb_func)(void*) = NULL;
+	void  *cb_data         = NULL;
+	max_actions_t *actions = QuickSortMaxeler_convert_internal(stored_maxfile, &interface_actions, 1, &cb_func, &cb_data);
+	CHECK_NULL(actions, "Unable to build actions", NULL);
+	max_validate(actions);
+	CHECK_ERRORS_ST(actions, NULL);
+	CHECK_ERRORS_ST(stored_engine, NULL);
+	max_run_t *run;
+	if (cb_func == NULL) {
+		run = max_run_nonblock(stored_engine, actions);
+	} else {
+		run = max_run_nonblock_with_cb(stored_engine, actions, cb_func, cb_data);
+	}
+	CHECK_NULL(run, "Unable to run actions", NULL);
+	CHECK_ERRORS_ST(actions, NULL);
+	max_actions_free(actions);
+	return run;
+}
+
+void QuickSortMaxeler_run(
+	max_engine_t *engine,
+	QuickSortMaxeler_actions_t *interface_actions)
+{
+	max_run_t *run = QuickSortMaxeler_run_nonblock(engine, interface_actions);
+	CHECK_NULL(run, "Unable to run actions", );
+	max_wait(run);
+}
+
+max_run_t *QuickSortMaxeler_run_nonblock(
+	max_engine_t *engine,
+	QuickSortMaxeler_actions_t *interface_actions)
+{
+	max_file_t *maxfile = max_engine_get_max_file(engine); 
+	void (*cb_func)(void*) = NULL;
+	void  *cb_data         = NULL;
+	max_actions_t *actions = QuickSortMaxeler_convert_internal(maxfile, interface_actions, 1, &cb_func, &cb_data);
+	CHECK_ERRORS_ST(actions, NULL);
+	max_run_t *run;
+	if (cb_func == NULL) {
+		run = max_run_nonblock(engine, actions);
+	} else {
+		run = max_run_nonblock_with_cb(engine, actions, cb_func, cb_data);
+	}
+	CHECK_NULL(run, "Unable to run actions", NULL);
+	max_actions_free(actions);
+	return run;
+}
+
+
+/**
+ * \brief Group run advanced static function for the interface 'default'.
+ * 
+ * \param [in] group Group to use.
+ * \param [in,out] interface_actions Actions to run.
+ *
+ * Run the actions on the first device available in the group.
+ */
+void QuickSortMaxeler_run_group(max_group_t *group, QuickSortMaxeler_actions_t *interface_actions)
+{
+	max_run_t *run = QuickSortMaxeler_run_group_nonblock(group, interface_actions);
+	CHECK_NULL(run, "Unable to run actions", );
+	max_wait(run);
+}
+
+
+/**
+ * \brief Group run advanced static non-blocking function for the interface 'default'.
+ * 
+ *
+ * Schedule the actions to run on the first device available in the group and return immediately.
+ * The status of the run must be checked with ::max_wait. 
+ * Note that use of ::max_nowait is prohibited with non-blocking running on groups:
+ * see the ::max_run_group_nonblock documentation for more explanation.
+ *
+ * \param [in] group Group to use.
+ * \param [in] interface_actions Actions to run.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *QuickSortMaxeler_run_group_nonblock(max_group_t *group, QuickSortMaxeler_actions_t *interface_actions)
+{
+	max_file_t *maxfile = max_group_get_max_file(group);
+	max_actions_t *actions = QuickSortMaxeler_convert_internal(maxfile, interface_actions, 1, NULL, NULL);
+	if(actions == NULL) return NULL;
+	if(!max_ok(actions->errors)) return NULL;
+	max_validate(actions);
+	max_run_t *run = max_run_group_nonblock(group, actions);
+	max_actions_free(actions);
+	return run;
+}
+
+
+/**
+ * \brief Array run advanced static function for the interface 'default'.
+ * 
+ * \param [in] engarray The array of devices to use.
+ * \param [in,out] interface_actions The array of actions to run.
+ *
+ * Run the array of actions on the array of engines.  The length of interface_actions
+ * must match the size of engarray.
+ */
+void QuickSortMaxeler_run_array(max_engarray_t *engarray, QuickSortMaxeler_actions_t *interface_actions[])
+{
+	max_run_t *run = QuickSortMaxeler_run_array_nonblock(engarray, interface_actions);
+	CHECK_NULL(run, "Unable to run actions", );
+	max_wait(run);
+}
+
+
+/**
+ * \brief Array run advanced static non-blocking function for the interface 'default'.
+ * 
+ *
+ * Schedule to run the array of actions on the array of engines, and return immediately.
+ * The length of interface_actions must match the size of engarray.
+ * The status of the run can be checked either by ::max_wait or ::max_nowait;
+ * note that one of these *must* be called, so that associated memory can be released.
+ *
+ * \param [in] engarray The array of devices to use.
+ * \param [in] interface_actions The array of actions to run.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *QuickSortMaxeler_run_array_nonblock(max_engarray_t *engarray, QuickSortMaxeler_actions_t *interface_actions[])
+{
+	max_file_t *maxfile = max_engarray_get_max_file(engarray, 0);
+	int i;
+	max_actarray_t *actarray = max_actarray_init(maxfile, engarray->size);
+	if (actarray == NULL) return NULL;
+	max_actions_t **arr_actions = malloc(engarray->size * sizeof(max_actions_t*));
+	for ( i = 0 ; i < actarray->size; i++ ) {
+		max_actions_t *actions = QuickSortMaxeler_convert_internal(maxfile, interface_actions[i], 1, NULL, NULL);
+		if (actions == NULL) return NULL;
+		arr_actions[i] = actions;
+		max_set_action(actarray, i, actions);
+	}
+	max_run_t *run = max_run_array_nonblock(engarray, actarray);
+	for ( i = 0 ; i < actarray->size ; i++ ) { max_actions_free(arr_actions[i]); }
+	max_actarray_free(actarray);
+	free(arr_actions);
+	return run;
+}
+
+
+/**
+ * \brief Converts a static-interface action struct into a dynamic-interface max_actions_t struct.
+ *
+ * Note that this is an internal utility function used by other functions in the static interface.
+ *
+ * \param [in] maxfile The maxfile to use.
+ * \param [in] interface_actions The interface-specific actions to run.
+ * \return The dynamic-interface actions to run, or NULL in case of error.
+ */
+max_actions_t* QuickSortMaxeler_convert(max_file_t *maxfile, QuickSortMaxeler_actions_t *interface_actions)
+{
+	return QuickSortMaxeler_convert_internal(maxfile, interface_actions, 0, NULL, NULL);
+}
+
+#undef CHECK_ERRORS_ST
+#undef CHECK_NULL
+
+
+
+#endif /* SLIC_USE_DEFINITIONS */
+
+#ifdef SLIC_DYNAMIC_CODE
+SLIC_MODE_START(default)	
+SLIC_PARAMETER_UINT64(int32_t, N, param_N)	
+SLIC_SET_TICKS(QuickSortMaxelerKernel, param_N)	
+SLIC_TEMP_VAR(int64_t tmp_0 = (param_N * 1);)	
+SLIC_STREAM(addressA, tmp_0)	
+SLIC_TEMP_VAR(int64_t tmp_1 = (param_N * 1);)	
+SLIC_STREAM(addressB, tmp_1)	
+SLIC_TEMP_VAR(int64_t tmp_2 = (param_N * 4);)	
+SLIC_STREAM(outputA, tmp_2)	
+SLIC_TEMP_VAR(int64_t tmp_3 = (param_N * 4);)	
+SLIC_STREAM(outputB, tmp_3)	
+SLIC_MODE_END(default)
+
+#endif /* SLIC_DYNAMIC_CODE */
+
+#ifdef SKIN_META_DATA
+PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PG1h
+eGZpbGUgZm9ybWF0LXZlcnNpb249IjIwMTIwMjAwIiBoZWFkZXI9IlF1aWNrU29ydE1heGVsZXIu
+aCIgbmFtZT0iUXVpY2tTb3J0TWF4ZWxlciI+PGNvbnN0YW50IG5hbWU9IlBDSUVfQUxJR05NRU5U
+IiB0eXBlPSJsb25nIiB2YWx1ZT0iMTYiLz48ZW5naW5lbW9kZSBuYW1lPSJkZWZhdWx0Ij48ZnVu
+Y3Rpb24gbmFtZT0iUXVpY2tTb3J0TWF4ZWxlciIgcmV0dXJuLXZhbHVlPSJ2b2lkIj48c2NhbGFy
+IGRlc2M9IkludGVyZmFjZSBQYXJhbWV0ZXIgJnF1b3Q7TiZxdW90Oy46IE51bWJlciBvZiBkYXRh
+IGl0ZW1zIHRvIHByb2Nlc3MiIGRpcmVjdGlvbj0iSW5wdXQiIG5hbWU9InBhcmFtX04iIHR5cGU9
+ImludDMyX3QiLz48YXJyYXkgZGVzYz0iVGhlIHN0cmVhbSBzaG91bGQgYmUgb2Ygc2l6ZSAocGFy
+YW1fTiAqIDEpIGJ5dGVzLiIgZGlyZWN0aW9uPSJJbnB1dCIgbmFtZT0iaW5zdHJlYW1fYWRkcmVz
+c0EiIHNpemU9IihwYXJhbV9OICogMSkiIHRyYW5zcG9zZT0idHJ1ZSIgdHlwZT0idWludDhfdCI+
+PGRpbWVuc2lvbiBpbmRleD0iMCI+PGxlbmd0aD48ZnVuY3Rpb25DYWxsPjxudW1CaW5hcnlPcGVy
+YXRvciBvcGVyYXRvcj0iLyIgdmFsdWU9IigocGFyYW1fTiAqIDEpIC8gMSkiPjxmdW5jdGlvbkNh
+bGw+PG51bUJpbmFyeU9wZXJhdG9yIG9wZXJhdG9yPSIqIiB2YWx1ZT0iKHBhcmFtX04gKiAxKSI+
+PHVzZXJQYXJhbSB2YWx1ZT0icGFyYW1fTiIvPjxjb25zdGFudFZhbHVlIHZhbHVlPSIxIi8+PC9u
+dW1CaW5hcnlPcGVyYXRvcj48L2Z1bmN0aW9uQ2FsbD48Y29uc3RhbnRWYWx1ZSB2YWx1ZT0iMSIv
+PjwvbnVtQmluYXJ5T3BlcmF0b3I+PC9mdW5jdGlvbkNhbGw+PC9sZW5ndGg+PC9kaW1lbnNpb24+
+PC9hcnJheT48YXJyYXkgZGVzYz0iVGhlIHN0cmVhbSBzaG91bGQgYmUgb2Ygc2l6ZSAocGFyYW1f
+TiAqIDEpIGJ5dGVzLiIgZGlyZWN0aW9uPSJJbnB1dCIgbmFtZT0iaW5zdHJlYW1fYWRkcmVzc0Ii
+IHNpemU9IihwYXJhbV9OICogMSkiIHRyYW5zcG9zZT0idHJ1ZSIgdHlwZT0idWludDhfdCI+PGRp
+bWVuc2lvbiBpbmRleD0iMCI+PGxlbmd0aD48ZnVuY3Rpb25DYWxsPjxudW1CaW5hcnlPcGVyYXRv
+ciBvcGVyYXRvcj0iLyIgdmFsdWU9IigocGFyYW1fTiAqIDEpIC8gMSkiPjxmdW5jdGlvbkNhbGw+
+PG51bUJpbmFyeU9wZXJhdG9yIG9wZXJhdG9yPSIqIiB2YWx1ZT0iKHBhcmFtX04gKiAxKSI+PHVz
+ZXJQYXJhbSB2YWx1ZT0icGFyYW1fTiIvPjxjb25zdGFudFZhbHVlIHZhbHVlPSIxIi8+PC9udW1C
+aW5hcnlPcGVyYXRvcj48L2Z1bmN0aW9uQ2FsbD48Y29uc3RhbnRWYWx1ZSB2YWx1ZT0iMSIvPjwv
+bnVtQmluYXJ5T3BlcmF0b3I+PC9mdW5jdGlvbkNhbGw+PC9sZW5ndGg+PC9kaW1lbnNpb24+PC9h
+cnJheT48YXJyYXkgZGVzYz0iVGhlIHN0cmVhbSBzaG91bGQgYmUgb2Ygc2l6ZSAocGFyYW1fTiAq
+IDQpIGJ5dGVzLiIgZGlyZWN0aW9uPSJPdXRwdXQiIG5hbWU9Im91dHN0cmVhbV9vdXRwdXRBIiBz
+aXplPSIocGFyYW1fTiAqIDQpIiB0cmFuc3Bvc2U9InRydWUiIHR5cGU9ImZsb2F0Ij48ZGltZW5z
+aW9uIGluZGV4PSIwIj48bGVuZ3RoPjxmdW5jdGlvbkNhbGw+PG51bUJpbmFyeU9wZXJhdG9yIG9w
+ZXJhdG9yPSIvIiB2YWx1ZT0iKChwYXJhbV9OICogNCkgLyA0KSI+PGZ1bmN0aW9uQ2FsbD48bnVt
+QmluYXJ5T3BlcmF0b3Igb3BlcmF0b3I9IioiIHZhbHVlPSIocGFyYW1fTiAqIDQpIj48dXNlclBh
+cmFtIHZhbHVlPSJwYXJhbV9OIi8+PGNvbnN0YW50VmFsdWUgdmFsdWU9IjQiLz48L251bUJpbmFy
+eU9wZXJhdG9yPjwvZnVuY3Rpb25DYWxsPjxjb25zdGFudFZhbHVlIHZhbHVlPSI0Ii8+PC9udW1C
+aW5hcnlPcGVyYXRvcj48L2Z1bmN0aW9uQ2FsbD48L2xlbmd0aD48L2RpbWVuc2lvbj48L2FycmF5
+PjxhcnJheSBkZXNjPSJUaGUgc3RyZWFtIHNob3VsZCBiZSBvZiBzaXplIChwYXJhbV9OICogNCkg
+Ynl0ZXMuIiBkaXJlY3Rpb249Ik91dHB1dCIgbmFtZT0ib3V0c3RyZWFtX291dHB1dEIiIHNpemU9
+IihwYXJhbV9OICogNCkiIHRyYW5zcG9zZT0idHJ1ZSIgdHlwZT0iZmxvYXQiPjxkaW1lbnNpb24g
+aW5kZXg9IjAiPjxsZW5ndGg+PGZ1bmN0aW9uQ2FsbD48bnVtQmluYXJ5T3BlcmF0b3Igb3BlcmF0
+b3I9Ii8iIHZhbHVlPSIoKHBhcmFtX04gKiA0KSAvIDQpIj48ZnVuY3Rpb25DYWxsPjxudW1CaW5h
+cnlPcGVyYXRvciBvcGVyYXRvcj0iKiIgdmFsdWU9IihwYXJhbV9OICogNCkiPjx1c2VyUGFyYW0g
+dmFsdWU9InBhcmFtX04iLz48Y29uc3RhbnRWYWx1ZSB2YWx1ZT0iNCIvPjwvbnVtQmluYXJ5T3Bl
+cmF0b3I+PC9mdW5jdGlvbkNhbGw+PGNvbnN0YW50VmFsdWUgdmFsdWU9IjQiLz48L251bUJpbmFy
+eU9wZXJhdG9yPjwvZnVuY3Rpb25DYWxsPjwvbGVuZ3RoPjwvZGltZW5zaW9uPjwvYXJyYXk+PGFy
+cmF5IGRlc2M9Ik1hcHBlZCBST00gaW5tZW1fUXVpY2tTb3J0TWF4ZWxlcktlcm5lbF9tYXBwZWRS
+b20sIHNob3VsZCBiZSBvZiBzaXplICgyNTYgKiBzaXplb2YoZG91YmxlKSkuIiBkaXJlY3Rpb249
+IklucHV0IiBuYW1lPSJpbm1lbV9RdWlja1NvcnRNYXhlbGVyS2VybmVsX21hcHBlZFJvbSIgc2l6
+ZT0iMjA0OCIgdHJhbnNwb3NlPSJmYWxzZSIgdHlwZT0iZG91YmxlIj48ZGltZW5zaW9uIGluZGV4
+PSIwIj48c2l6ZUV4cHJlc3Npb24gdmFsdWU9IigyMDQ4KSAvIDgiLz48L2RpbWVuc2lvbj48L2Fy
+cmF5PjwvZnVuY3Rpb24+PC9lbmdpbmVtb2RlPjwvbWF4ZmlsZT4=
+#endif /* SKIN_META_DATA */
+
+#ifdef SLIC_B64_DEFINITIONS
+I2luY2x1ZGUgPHN0ZGlvLmg+CiNpbmNsdWRlIDxtYXRoLmg+CiNpbmNsdWRlIDxwdGhyZWFkLmg+
+CiNpbmNsdWRlIDxzdHJpbmcuaD4KI2luY2x1ZGUgPHVuaXN0ZC5oPgojaW5jbHVkZSA8c3RkbGli
+Lmg+CnN0YXRpYyBtYXhfZmlsZV90ICpzdG9yZWRfbWF4ZmlsZSA9IE5VTEw7CnN0YXRpYyBtYXhf
+ZW5naW5lX3QgKnN0b3JlZF9lbmdpbmUgPSBOVUxMOwpzdGF0aWMgY2hhciAqc3RvcmVkX2Vycm9y
+ID0gTlVMTDsKc3RhdGljIGludCBzdG9yZWRfaGFzX2Vycm9yID0gMDsKc3RhdGljIHB0aHJlYWRf
+b25jZV90IHNsaWNfYnNfaXNfaW5pdGlhbGlzZWQgPSBQVEhSRUFEX09OQ0VfSU5JVDsKCnN0YXRp
+YyB2b2lkIHNldF9lcnJvcihjb25zdCBjaGFyICplcnJvcl9zdHIpCnsKCXN0b3JlZF9oYXNfZXJy
+b3IgPSAxOyAKCWlmKHN0b3JlZF9lcnJvciA9PSBOVUxMKSB7CgkJc3RvcmVkX2Vycm9yID0gc3Ry
+ZHVwKGVycm9yX3N0cik7Cgl9IGVsc2UgewoJCWNoYXIgKm5lcnIgPSBtYWxsb2Moc3RybGVuKHN0
+b3JlZF9lcnJvcikgKyBzdHJsZW4oZXJyb3Jfc3RyKSArIDIpOwoJCXNwcmludGYobmVyciwgIiVz
+XG4lcyIsIHN0b3JlZF9lcnJvciwgZXJyb3Jfc3RyKTsKCQlmcmVlKHN0b3JlZF9lcnJvcik7CgkJ
+c3RvcmVkX2Vycm9yID0gbmVycjsKCX0KfQpzdGF0aWMgdm9pZCBzZXRfZXJyb3JfYW5kX2ZyZWUo
+Y2hhciAqZXJyb3Jfc3RyKXsKCXNldF9lcnJvcihlcnJvcl9zdHIpOwoJZnJlZShlcnJvcl9zdHIp
+Owp9CmludCBRdWlja1NvcnRNYXhlbGVyX2hhc19lcnJvcnModm9pZCkKewlyZXR1cm4gc3RvcmVk
+X2hhc19lcnJvcjsgfQpjb25zdCBjaGFyKiBRdWlja1NvcnRNYXhlbGVyX2dldF9lcnJvcnModm9p
+ZCkKewlyZXR1cm4gc3RvcmVkX2Vycm9yOyB9CnZvaWQgUXVpY2tTb3J0TWF4ZWxlcl9jbGVhcl9l
+cnJvcnModm9pZCkKewoJZnJlZShzdG9yZWRfZXJyb3IpOwoJc3RvcmVkX2Vycm9yID0gTlVMTDsK
+CXN0b3JlZF9oYXNfZXJyb3IgPSAwOwp9CgpzdGF0aWMgY2hhciBRdWlja1NvcnRNYXhlbGVyX3Vz
+ZV9zaW11bGF0aW9uWzE2XTsKc3RhdGljIHZvaWQgUXVpY2tTb3J0TWF4ZWxlcl9kZWZfdXNlX3Np
+bXVsYXRpb24odm9pZCkKewoJbG9uZyBwaWQgPSAoKGxvbmcpIGdldHBpZCgpKSAlIDEwMDAwMDsK
+CXNucHJpbnRmKFF1aWNrU29ydE1heGVsZXJfdXNlX3NpbXVsYXRpb24sIDE2LCAiUXVpY2tTb3Jf
+JTA1bGRfIiwgcGlkKTsKfQpzdGF0aWMgY29uc3QgY2hhciAqUXVpY2tTb3J0TWF4ZWxlcl9jaGVj
+a191c2Vfc2ltdWxhdGlvbih2b2lkKQp7CglRdWlja1NvcnRNYXhlbGVyX2RlZl91c2Vfc2ltdWxh
+dGlvbigpOwoJY29uc3QgY2hhciAqdXNlX3NpbSA9IG1heF9jb25maWdfZ2V0X3N0cmluZyhNQVhf
+Q09ORklHX1VTRV9TSU1VTEFUSU9OKTsKCWlmICh1c2Vfc2ltID09IE5VTEwpIHsKCQl1c2Vfc2lt
+ID0gUXVpY2tTb3J0TWF4ZWxlcl91c2Vfc2ltdWxhdGlvbjsKCQltYXhfY29uZmlnX3NldF9zdHJp
+bmcoTUFYX0NPTkZJR19VU0VfU0lNVUxBVElPTiwgdXNlX3NpbSk7Cgl9CglyZXR1cm4gdXNlX3Np
+bTsKfQoKc3RhdGljIGludCBRdWlja1NvcnRNYXhlbGVyX3NpbXVsYXRpb25fbGF1bmNoID0gMDsK
+aW50IFF1aWNrU29ydE1heGVsZXJfc2ltdWxhdG9yX3N0YXJ0KHZvaWQpCnsKCWludCByZXR2YWwg
+PSAwOwoJY29uc3QgY2hhciAqdXNlX3NpbSA9IFF1aWNrU29ydE1heGVsZXJfY2hlY2tfdXNlX3Np
+bXVsYXRpb24oKTsKCWNoYXIgYnVmZlsxMDI0XTsKCXNucHJpbnRmKGJ1ZmYsIDEwMjQsICJQQVRI
+PXNpbXV0aWxzOiRQQVRIIG1heGNvbXBpbGVyc2ltIC1kIDEgLW4gJXMgLWMgTUFYMzQyNEEgLVMg
+c2ltdXRpbHMgcmVzdGFydCIsIHVzZV9zaW0pOwoJRklMRSAqcGlwZV9mcCA9IHBvcGVuKGJ1ZmYs
+ICJyIik7CglpZiAocGlwZV9mcCA9PSBOVUxMKSB7CgkJc3RybmNhdChidWZmLCAiIDogZmFpbGVk
+IHRvIGV4ZWN1dGUuIiwgKDEwMjQgLSBzdHJsZW4oYnVmZikpKTsKCQlzZXRfZXJyb3IoYnVmZik7
+CgkJcmV0dXJuIC0xOwoJfQoJd2hpbGUgKGZnZXRzKGJ1ZmYsIDEwMjQsIHBpcGVfZnApICE9IE5V
+TEwpIHsKCQkvKiBVbmNvbW1lbnQgdGhpcyB0byBnZXQgc2ltdWxhdG9yIGNvbW1hbmQgb3V0cHV0
+ICovCgkJLyogZnByaW50ZihzdGRlcnIsIGJ1ZmYpOyAqLwoJCWlmIChzdHJzdHIoYnVmZiwgIkVy
+cm9yIikpIHsKCQkJc2V0X2Vycm9yKGJ1ZmYpOwoJCQlyZXR2YWwgPSAtMTsKCQl9Cgl9CglwY2xv
+c2UocGlwZV9mcCk7CglyZXR1cm4gcmV0dmFsOwp9CgppbnQgUXVpY2tTb3J0TWF4ZWxlcl9zaW11
+bGF0b3Jfc3RvcCh2b2lkKQp7Cgljb25zdCBjaGFyICp1c2Vfc2ltID0gUXVpY2tTb3J0TWF4ZWxl
+cl9jaGVja191c2Vfc2ltdWxhdGlvbigpOwoJY2hhciBidWZmWzEwMjRdOwoJc25wcmludGYoYnVm
+ZiwgMTAyNCwgIlBBVEg9c2ltdXRpbHM6JFBBVEggbWF4Y29tcGlsZXJzaW0gLWQgMSAtbiAlcyAt
+YyBNQVgzNDI0QSAtUyBzaW11dGlscyBzdG9wIiwgdXNlX3NpbSk7CglGSUxFICpwaXBlX2ZwID0g
+cG9wZW4oYnVmZiwgInIiKTsKCWlmIChwaXBlX2ZwID09IE5VTEwpIHsKCQlzdHJuY2F0KGJ1ZmYs
+ICIgOiBmYWlsZWQgdG8gZXhlY3V0ZS4iLCAoMTAyNCAtIHN0cmxlbihidWZmKSkpOwoJCXNldF9l
+cnJvcihidWZmKTsKCQlyZXR1cm4gLTE7Cgl9Cgl3aGlsZSAoZmdldHMoYnVmZiwgMTAyNCwgcGlw
+ZV9mcCkgIT0gTlVMTCkgewoJCS8qIFVuY29tbWVudCB0aGlzIHRvIGdldCBzaW11bGF0b3IgY29t
+bWFuZCBvdXRwdXQgKi8KCQkvKiBmcHJpbnRmKHN0ZGVyciwgYnVmZik7ICovCgkJOwoJfQoJcGNs
+b3NlKHBpcGVfZnApOwoJcmV0dXJuIDA7Cn0KCnN0YXRpYyB2b2lkIFF1aWNrU29ydE1heGVsZXJf
+c3RhdGljX2luaXQodm9pZCkgCnsKCXN0b3JlZF9tYXhmaWxlID0gUXVpY2tTb3J0TWF4ZWxlcl9p
+bml0KCk7CglpZiAoc3RvcmVkX21heGZpbGUgPT0gTlVMTCB8fCAhbWF4X29rKHN0b3JlZF9tYXhm
+aWxlLT5lcnJvcnMpKSB7CgkJc3RvcmVkX21heGZpbGUgPSBOVUxMOwoJCWlmKG1heF9jb25maWdf
+Z2V0X2Jvb2woTUFYX0NPTkZJR19TVEFUSUNfSU5URVJGQUNFX0FCT1JUX09OX0VSUk9SKSkgYWJv
+cnQoKTsKCQllbHNlIHsgc2V0X2Vycm9yKCJVbmFibGUgdG8gbG9hZCBtYXhmaWxlIik7IHJldHVy
+bjsgfQoJfQoJaWYoIW1heF9vayhtYXhfZ2xvYmFsX2Vycm9ycygpKSkgewoJCXNldF9lcnJvcl9h
+bmRfZnJlZShtYXhfZXJyb3JzX3RyYWNlKG1heF9nbG9iYWxfZXJyb3JzKCkpKTsKCQlyZXR1cm47
+Cgl9CglpZighbWF4X2NvbmZpZ19nZXRfYm9vbChNQVhfQ09ORklHX1NUQVRJQ19JTlRFUkZBQ0Vf
+QUJPUlRfT05fRVJST1IpKQoJCW1heF9lcnJvcnNfbW9kZShzdG9yZWRfbWF4ZmlsZS0+ZXJyb3Jz
+LCAwKTsKCXRpbWVfdCB0aW1lb3V0X3ByZXZpb3VzID0gbWF4X2xvYWRfdGltZW91dChzdG9yZWRf
+bWF4ZmlsZSwgMzApOwoJY29uc3QgY2hhciAqdXNlX3NpbSA9IFF1aWNrU29ydE1heGVsZXJfY2hl
+Y2tfdXNlX3NpbXVsYXRpb24oKTsKCWlmIChtYXhfcGluZ19kYWVtb24oc3RvcmVkX21heGZpbGUs
+IHVzZV9zaW0pID09IDApIHsKCQlpbnQgc2ltX3N0YXQgPSBRdWlja1NvcnRNYXhlbGVyX3NpbXVs
+YXRvcl9zdGFydCgpOwoJCWlmICgoc2ltX3N0YXQgPT0gMCkgJiYgKG1heF9waW5nX2RhZW1vbihz
+dG9yZWRfbWF4ZmlsZSwgdXNlX3NpbSkgPT0gMSkpIHsKCQkJUXVpY2tTb3J0TWF4ZWxlcl9zaW11
+bGF0aW9uX2xhdW5jaCA9IDE7CgkJfSBlbHNlIHsKCQkJc2V0X2Vycm9yKCJFcnJvcjogQW4gZXJy
+b3Igb2NjdXJyZWQgd2hpbGUgdHJ5aW5nIHRvIHN0YXJ0IHRoZSBzaW11bGF0aW9uIGluZnJhc3Ry
+dWN0dXJlIGF1dG9tYXRpY2FsbHkuIik7CgkJCXNldF9lcnJvcigiRXJyb3I6IENoZWNrIHRoYXQg
+J3VzZV9zaW11bGF0aW9uPTxzaW11bGF0b3JfbmFtZT4nIGlzIHNldCBjb3JyZWN0bHkgaW4geW91
+ciBTTGlDIGNvbmZpZ3VyYXRpb24iKTsKCQkJc2V0X2Vycm9yKCJFcnJvcjogYW5kIHRoYXQgdGhl
+IGFzc29jaWF0ZWQgc2ltdWxhdGVkIHN5c3RlbSBkYWVtb24gaXMgcnVubmluZy4iKTsKCQkJbWF4
+X2ZpbGVfZnJlZShzdG9yZWRfbWF4ZmlsZSk7CgkJCXN0b3JlZF9tYXhmaWxlID0gTlVMTDsKCQkJ
+cmV0dXJuOwoJCX0KCX0KCXN0b3JlZF9lbmdpbmUgPSBtYXhfbG9hZChzdG9yZWRfbWF4ZmlsZSwg
+IioiKTsKCWlmICghbWF4X29rKHN0b3JlZF9tYXhmaWxlLT5lcnJvcnMpKSB7CgkJaWYobWF4X2Nv
+bmZpZ19nZXRfYm9vbChNQVhfQ09ORklHX1NUQVRJQ19JTlRFUkZBQ0VfQUJPUlRfT05fRVJST1Ip
+KSB7CgkJCWZwcmludGYoc3RkZXJyLCAiXG5VbmFibGUgdG8gbG9hZCBlbmdpbmU6IGFib3J0aW5n
+IG5vdy5cblxuIik7CgkJCWZmbHVzaChzdGRlcnIpOwoJCQlhYm9ydCgpOwoJCX0gZWxzZSB7CgkJ
+CXNldF9lcnJvcl9hbmRfZnJlZShtYXhfZXJyb3JzX3RyYWNlKHN0b3JlZF9tYXhmaWxlLT5lcnJv
+cnMpKTsKCQkJbWF4X2ZpbGVfZnJlZShzdG9yZWRfbWF4ZmlsZSk7CgkJCXN0b3JlZF9tYXhmaWxl
+ID0gTlVMTDsKCQkJcmV0dXJuOwoJCX0gCgl9IAoJbWF4X2xvYWRfdGltZW91dChzdG9yZWRfbWF4
+ZmlsZSwgdGltZW91dF9wcmV2aW91cyk7Cn0Kdm9pZCBRdWlja1NvcnRNYXhlbGVyX2ZyZWUodm9p
+ZCkKewoJaWYgKHN0b3JlZF9lbmdpbmUgIT0gTlVMTCkgewoJCW1heF91bmxvYWQoc3RvcmVkX2Vu
+Z2luZSk7CgkJc3RvcmVkX2VuZ2luZSA9IE5VTEw7Cgl9CglpZiAoc3RvcmVkX21heGZpbGUgIT0g
+TlVMTCkgewoJCW1heF9maWxlX2ZyZWUoc3RvcmVkX21heGZpbGUpOwoJCXN0b3JlZF9tYXhmaWxl
+ID0gTlVMTDsKCX0KCWlmIChzdG9yZWRfZXJyb3IgIT0gTlVMTCkgewoJCWZyZWUoc3RvcmVkX2Vy
+cm9yKTsKCQlzdG9yZWRfZXJyb3IgPSBOVUxMOwoJfQoJaWYgKFF1aWNrU29ydE1heGVsZXJfc2lt
+dWxhdGlvbl9sYXVuY2ggPT0gMSkgewoJCWludCBzaW1fc3RhdCA9IFF1aWNrU29ydE1heGVsZXJf
+c2ltdWxhdG9yX3N0b3AoKTsKCQlpZiAoc2ltX3N0YXQgIT0gMCApIHsKCQkJZnByaW50ZihzdGRl
+cnIsICJFcnJvciBzdG9wcGluZyBzaW11bGF0b3IuIik7CgkJfQoJCVF1aWNrU29ydE1heGVsZXJf
+c2ltdWxhdGlvbl9sYXVuY2ggPSAwOwoJfQp9CgpzdGF0aWMgaW50IFF1aWNrU29ydE1heGVsZXJf
+Z2V0X3BjaWVfYWxpZ25tZW50KHZvaWQpCnsKI2lmZGVmIFF1aWNrU29ydE1heGVsZXJfUENJRV9B
+TElHTk1FTlQKCXJldHVybiAoKFF1aWNrU29ydE1heGVsZXJfUENJRV9BTElHTk1FTlQgPCAxKSA/
+IDE2IDogUXVpY2tTb3J0TWF4ZWxlcl9QQ0lFX0FMSUdOTUVOVCk7CiNlbHNlCglyZXR1cm4gMTY7
+CiNlbmRpZgp9CgpzdGF0aWMgaW50IFF1aWNrU29ydE1heGVsZXJfY2hlY2tfYWxpZ25lZChjb25z
+dCB2b2lkICpkYXRhKQp7Cgl1aW50cHRyX3QgcG9pbnRlciA9ICh1aW50cHRyX3QpIGRhdGE7Cglp
+bnQgYWxpZ25tZW50ID0gUXVpY2tTb3J0TWF4ZWxlcl9nZXRfcGNpZV9hbGlnbm1lbnQoKTsKCXJl
+dHVybiAocG9pbnRlciAlIGFsaWdubWVudCkgPyAxIDogMDsKfQoKc3RhdGljIHZvaWQgKlF1aWNr
+U29ydE1heGVsZXJfbWFsbG9jX2FsaWduZWQoY29uc3Qgc2l6ZV90IHNpemUpCnsKCXZvaWQgKnB0
+cjsKCWludCBhbGlnbm1lbnQgPSBRdWlja1NvcnRNYXhlbGVyX2dldF9wY2llX2FsaWdubWVudCgp
+OwoJcG9zaXhfbWVtYWxpZ24oJnB0ciwgYWxpZ25tZW50LCBzaXplKTsKCXJldHVybiBwdHI7Cn0K
+CgoKLyotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKi8KLyotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+IEludGVyZmFjZSBkZWZhdWx0IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKi8KLyotLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tKi8KCgoKI2RlZmluZSBDSEVDS19FUlJPUlNfU1QoU1QsIFJFVCkgaWYo
+IW1heF9vayhTVC0+ZXJyb3JzKSkgeyBpZihtYXhfY29uZmlnX2dldF9ib29sKE1BWF9DT05GSUdf
+U1RBVElDX0lOVEVSRkFDRV9BQk9SVF9PTl9FUlJPUikpIHsgZnByaW50ZihzdGRlcnIsICIlc1xu
+IiwgbWF4X2Vycm9yc190cmFjZShTVC0+ZXJyb3JzKSk7IGFib3J0KCk7IH0gc2V0X2Vycm9yX2Fu
+ZF9mcmVlKG1heF9lcnJvcnNfdHJhY2UoU1QtPmVycm9ycykpOyByZXR1cm4gUkVUOyB9IAojZGVm
+aW5lIENIRUNLX05VTEwoVkFMVUUsIE1FU1NBR0UsIFJFVCkgaWYoVkFMVUUgPT0gTlVMTCkgeyBp
+ZiAobWF4X2NvbmZpZ19nZXRfYm9vbChNQVhfQ09ORklHX1NUQVRJQ19JTlRFUkZBQ0VfQUJPUlRf
+T05fRVJST1IpKSB7IGZwcmludGYoc3RkZXJyLCAiJXNcbiVzXG4iLCAoc3RvcmVkX2Vycm9yID09
+IE5VTEwpID8gIiIgOiBzdG9yZWRfZXJyb3IsIE1FU1NBR0UpOyBhYm9ydCgpOyB9IHNldF9lcnJv
+cihNRVNTQUdFKTsgcmV0dXJuIFJFVDsgfQoKIAp0eXBlZGVmIHN0cnVjdCBRdWlja1NvcnRNYXhl
+bGVyX2NhbGxiYWNrX3N0cmVhbSB7Cgl1aW50OF90ICp1c2VyX3B0cjsKCXVpbnQ4X3QgKmFsaWdu
+ZWRfcHRyOwoJc2l6ZV90ICAgc2l6ZTsKCWludCAgICAgIGlzX291dHB1dDsKfSBRdWlja1NvcnRN
+YXhlbGVyX2NhbGxiYWNrX3N0cmVhbV90OwoKdHlwZWRlZiBzdHJ1Y3QgUXVpY2tTb3J0TWF4ZWxl
+cl9jYWxsYmFja19kYXRhIHsKCVF1aWNrU29ydE1heGVsZXJfY2FsbGJhY2tfc3RyZWFtX3Qgc3Ry
+ZWFtWzRdOyAKCWludCBjb3VudDsKCWludCBtYXhfY291bnQ7Cn0gUXVpY2tTb3J0TWF4ZWxlcl9j
+YWxsYmFja19kYXRhX3Q7CgpzdGF0aWMgdm9pZCBRdWlja1NvcnRNYXhlbGVyX2NhbGxiYWNrX2lu
+dGVybmFsKHZvaWQgKmNiX2RhdGEpCnsKCVF1aWNrU29ydE1heGVsZXJfY2FsbGJhY2tfZGF0YV90
+ICpkYXRhID0gKFF1aWNrU29ydE1heGVsZXJfY2FsbGJhY2tfZGF0YV90KikgY2JfZGF0YTsKCWZv
+ciAoaW50IGkgPSAwIDsgaSA8IGRhdGEtPmNvdW50IDsgaSsrICkgewoJCVF1aWNrU29ydE1heGVs
+ZXJfY2FsbGJhY2tfc3RyZWFtX3QgKnMgPSAmZGF0YS0+c3RyZWFtW2ldOwoJCWlmIChzLT5pc19v
+dXRwdXQgJiYgKHMtPnNpemUgPiAwKSkgewoJCQltZW1jcHkocy0+dXNlcl9wdHIsIHMtPmFsaWdu
+ZWRfcHRyLCBzLT5zaXplKTsKCQl9CgkJZnJlZShzLT5hbGlnbmVkX3B0cik7Cgl9CglmcmVlKGRh
+dGEpOwp9CgpzdGF0aWMgbWF4X2FjdGlvbnNfdCogUXVpY2tTb3J0TWF4ZWxlcl9jb252ZXJ0X2lu
+dGVybmFsKAoJbWF4X2ZpbGVfdCAqbWF4ZmlsZSwKCVF1aWNrU29ydE1heGVsZXJfYWN0aW9uc190
+ICppbnRlcmZhY2VfYWN0aW9ucywKCWludCAgaXNfaW50ZXJuYWxfY2FsbCwKCXZvaWQgKCoqY2Fs
+bGJhY2tfZnVuYykodm9pZCopLAoJdm9pZCAqKmNhbGxiYWNrX2RhdGEpCnsKCW1heF9hY3Rpb25z
+X3QgKmFjdGlvbnMgPSBtYXhfYWN0aW9uc19pbml0KG1heGZpbGUsIE5VTEwpOwoJaWYoYWN0aW9u
+cyA9PSBOVUxMKSByZXR1cm4gTlVMTDsKCiNkZWZpbmUgQ0hFQ0tfRVJST1JTIGlmKCFtYXhfb2so
+YWN0aW9ucy0+ZXJyb3JzKSkgeyBzZXRfZXJyb3JfYW5kX2ZyZWUobWF4X2Vycm9yc190cmFjZShh
+Y3Rpb25zLT5lcnJvcnMpKTsgcmV0dXJuIE5VTEw7IH0gCgoJUXVpY2tTb3J0TWF4ZWxlcl9jYWxs
+YmFja19kYXRhX3QgKmNiX2RhdGEgPSBOVUxMOwoJaW50IHVzZV9jYWxsYmFjayA9IChjYWxsYmFj
+a19mdW5jICE9IE5VTEwpICYmIChjYWxsYmFja19kYXRhICE9IE5VTEwpOwoJaWYgKHVzZV9jYWxs
+YmFjaykgewoJCWNiX2RhdGEgPSBtYWxsb2Moc2l6ZW9mKFF1aWNrU29ydE1heGVsZXJfY2FsbGJh
+Y2tfZGF0YV90KSk7CgkJaWYgKGNiX2RhdGEgPT0gTlVMTCkgewoJCQlmcHJpbnRmKHN0ZGVyciwg
+IlVuYWJsZSB0byBhbGxvY2F0ZSBtZW1vcnkgZm9yIHN0cmVhbSBjYWxsYmFjayBkYXRhIGluIGZ1
+bmN0aW9uIFF1aWNrU29ydE1heGVsZXJfY29udmVydF9pbnRlcm5hbFxuIik7CgkJCXJldHVybiBO
+VUxMOwoJCX0KCQljYl9kYXRhLT5tYXhfY291bnQgPSA0OwoJCWNiX2RhdGEtPmNvdW50ICAgICA9
+IDA7CgkJKmNhbGxiYWNrX2RhdGEgICAgID0gY2JfZGF0YTsKCQkqY2FsbGJhY2tfZnVuYyAgICAg
+PSAmUXVpY2tTb3J0TWF4ZWxlcl9jYWxsYmFja19pbnRlcm5hbDsKCX0KCglpbnQzMl90IHBhcmFt
+X04gPSBpbnRlcmZhY2VfYWN0aW9ucy0+cGFyYW1fTjsKCQoJLyogY29kZSBmb3Igc2NhbGFyIFF1
+aWNrU29ydE1heGVsZXJLZXJuZWwucnVuX2N5Y2xlX2NvdW50ICovCgl1aW50NjRfdCB0aWNrc19R
+dWlja1NvcnRNYXhlbGVyS2VybmVsID0gcGFyYW1fTjsKCW1heF9zZXRfdGlja3MoYWN0aW9ucywg
+IlF1aWNrU29ydE1heGVsZXJLZXJuZWwiLCBwYXJhbV9OKTsKCUNIRUNLX0VSUk9SUzsKCS8qIGVu
+ZCBvZiBjb2RlIGZvciBzY2FsYXIgUXVpY2tTb3J0TWF4ZWxlcktlcm5lbC5ydW5fY3ljbGVfY291
+bnQqLwoJCglpbnQ2NF90IHRtcF8wID0gKHBhcmFtX04gKiAxKTsKCQoJLyogY29kZSBmb3Igc3Ry
+ZWFtIGFkZHJlc3NBICovCglzaXplX3QgaW5zdHJlYW1fc2l6ZV9hZGRyZXNzQSA9IHRtcF8wOwoJ
+aWYgKGluc3RyZWFtX3NpemVfYWRkcmVzc0EgPiAwKSB7CgkJY29uc3QgdWludDhfdCAqc3RyZWFt
+X3B0ciA9IGludGVyZmFjZV9hY3Rpb25zLT5pbnN0cmVhbV9hZGRyZXNzQTsKCQlpZiAodXNlX2Nh
+bGxiYWNrICYmICgxID09IFF1aWNrU29ydE1heGVsZXJfY2hlY2tfYWxpZ25lZChpbnRlcmZhY2Vf
+YWN0aW9ucy0+aW5zdHJlYW1fYWRkcmVzc0EpKSkgewoJCQl1aW50OF90ICphbGlnbmVkX2luc3Ry
+ZWFtX2FkZHJlc3NBID0gbWFsbG9jKGluc3RyZWFtX3NpemVfYWRkcmVzc0EpOwoJCQlpZiAoYWxp
+Z25lZF9pbnN0cmVhbV9hZGRyZXNzQSA9PSBOVUxMKSB7CgkJCQltYXhfcmVwb3J0X2Vycm9yX3Ns
+aWMoYWN0aW9ucy0+ZXJyb3JzLCBfX0ZJTEVfXywgX19MSU5FX18sIDUyNiwgIkZhaWxlZCB0byBh
+bGxvY2F0ZSBhbGlnbmVkIG1lbW9yeSBmb3Igc3RyZWFtICdhZGRyZXNzQSciKTsKCQkJCUNIRUNL
+X0VSUk9SUzsKCQkJfQoJCQkoJmNiX2RhdGEtPnN0cmVhbVtjYl9kYXRhLT5jb3VudF0pLT51c2Vy
+X3B0ciAgICA9ICh1aW50OF90KikgaW50ZXJmYWNlX2FjdGlvbnMtPmluc3RyZWFtX2FkZHJlc3NB
+OwoJCQkoJmNiX2RhdGEtPnN0cmVhbVtjYl9kYXRhLT5jb3VudF0pLT5hbGlnbmVkX3B0ciA9ICh1
+aW50OF90KikgYWxpZ25lZF9pbnN0cmVhbV9hZGRyZXNzQTsKCQkJKCZjYl9kYXRhLT5zdHJlYW1b
+Y2JfZGF0YS0+Y291bnRdKS0+c2l6ZSAgICAgICAgPSBpbnN0cmVhbV9zaXplX2FkZHJlc3NBOwoJ
+CQkoJmNiX2RhdGEtPnN0cmVhbVtjYl9kYXRhLT5jb3VudF0pLT5pc19vdXRwdXQgICA9IDA7CgkJ
+CWNiX2RhdGEtPmNvdW50ICs9IDE7CgkJCW1lbWNweShhbGlnbmVkX2luc3RyZWFtX2FkZHJlc3NB
+LCBpbnRlcmZhY2VfYWN0aW9ucy0+aW5zdHJlYW1fYWRkcmVzc0EsIGluc3RyZWFtX3NpemVfYWRk
+cmVzc0EpOwoJCQlzdHJlYW1fcHRyID0gYWxpZ25lZF9pbnN0cmVhbV9hZGRyZXNzQTsKCQl9CgkJ
+bWF4X3F1ZXVlX2lucHV0KGFjdGlvbnMsICJhZGRyZXNzQSIsIHN0cmVhbV9wdHIsIGluc3RyZWFt
+X3NpemVfYWRkcmVzc0EpOwoJCUNIRUNLX0VSUk9SUzsKCX0KCS8qIGVuZCBvZiBjb2RlIGZvciBz
+dHJlYW0gYWRkcmVzc0EgKi8KCQoJaW50NjRfdCB0bXBfMSA9IChwYXJhbV9OICogMSk7CgkKCS8q
+IGNvZGUgZm9yIHN0cmVhbSBhZGRyZXNzQiAqLwoJc2l6ZV90IGluc3RyZWFtX3NpemVfYWRkcmVz
+c0IgPSB0bXBfMTsKCWlmIChpbnN0cmVhbV9zaXplX2FkZHJlc3NCID4gMCkgewoJCWNvbnN0IHVp
+bnQ4X3QgKnN0cmVhbV9wdHIgPSBpbnRlcmZhY2VfYWN0aW9ucy0+aW5zdHJlYW1fYWRkcmVzc0I7
+CgkJaWYgKHVzZV9jYWxsYmFjayAmJiAoMSA9PSBRdWlja1NvcnRNYXhlbGVyX2NoZWNrX2FsaWdu
+ZWQoaW50ZXJmYWNlX2FjdGlvbnMtPmluc3RyZWFtX2FkZHJlc3NCKSkpIHsKCQkJdWludDhfdCAq
+YWxpZ25lZF9pbnN0cmVhbV9hZGRyZXNzQiA9IG1hbGxvYyhpbnN0cmVhbV9zaXplX2FkZHJlc3NC
+KTsKCQkJaWYgKGFsaWduZWRfaW5zdHJlYW1fYWRkcmVzc0IgPT0gTlVMTCkgewoJCQkJbWF4X3Jl
+cG9ydF9lcnJvcl9zbGljKGFjdGlvbnMtPmVycm9ycywgX19GSUxFX18sIF9fTElORV9fLCA1MjYs
+ICJGYWlsZWQgdG8gYWxsb2NhdGUgYWxpZ25lZCBtZW1vcnkgZm9yIHN0cmVhbSAnYWRkcmVzc0In
+Iik7CgkJCQlDSEVDS19FUlJPUlM7CgkJCX0KCQkJKCZjYl9kYXRhLT5zdHJlYW1bY2JfZGF0YS0+
+Y291bnRdKS0+dXNlcl9wdHIgICAgPSAodWludDhfdCopIGludGVyZmFjZV9hY3Rpb25zLT5pbnN0
+cmVhbV9hZGRyZXNzQjsKCQkJKCZjYl9kYXRhLT5zdHJlYW1bY2JfZGF0YS0+Y291bnRdKS0+YWxp
+Z25lZF9wdHIgPSAodWludDhfdCopIGFsaWduZWRfaW5zdHJlYW1fYWRkcmVzc0I7CgkJCSgmY2Jf
+ZGF0YS0+c3RyZWFtW2NiX2RhdGEtPmNvdW50XSktPnNpemUgICAgICAgID0gaW5zdHJlYW1fc2l6
+ZV9hZGRyZXNzQjsKCQkJKCZjYl9kYXRhLT5zdHJlYW1bY2JfZGF0YS0+Y291bnRdKS0+aXNfb3V0
+cHV0ICAgPSAwOwoJCQljYl9kYXRhLT5jb3VudCArPSAxOwoJCQltZW1jcHkoYWxpZ25lZF9pbnN0
+cmVhbV9hZGRyZXNzQiwgaW50ZXJmYWNlX2FjdGlvbnMtPmluc3RyZWFtX2FkZHJlc3NCLCBpbnN0
+cmVhbV9zaXplX2FkZHJlc3NCKTsKCQkJc3RyZWFtX3B0ciA9IGFsaWduZWRfaW5zdHJlYW1fYWRk
+cmVzc0I7CgkJfQoJCW1heF9xdWV1ZV9pbnB1dChhY3Rpb25zLCAiYWRkcmVzc0IiLCBzdHJlYW1f
+cHRyLCBpbnN0cmVhbV9zaXplX2FkZHJlc3NCKTsKCQlDSEVDS19FUlJPUlM7Cgl9CgkvKiBlbmQg
+b2YgY29kZSBmb3Igc3RyZWFtIGFkZHJlc3NCICovCgkKCWludDY0X3QgdG1wXzIgPSAocGFyYW1f
+TiAqIDQpOwoJCgkvKiBjb2RlIGZvciBzdHJlYW0gb3V0cHV0QSAqLwoJc2l6ZV90IG91dHN0cmVh
+bV9zaXplX291dHB1dEEgPSB0bXBfMjsKCWlmIChvdXRzdHJlYW1fc2l6ZV9vdXRwdXRBID4gMCkg
+ewoJCWZsb2F0ICpzdHJlYW1fcHRyID0gaW50ZXJmYWNlX2FjdGlvbnMtPm91dHN0cmVhbV9vdXRw
+dXRBOwoJCWlmICh1c2VfY2FsbGJhY2sgJiYgKDEgPT0gUXVpY2tTb3J0TWF4ZWxlcl9jaGVja19h
+bGlnbmVkKGludGVyZmFjZV9hY3Rpb25zLT5vdXRzdHJlYW1fb3V0cHV0QSkpKSB7CgkJCWZsb2F0
+ICphbGlnbmVkX291dHN0cmVhbV9vdXRwdXRBID0gbWFsbG9jKG91dHN0cmVhbV9zaXplX291dHB1
+dEEpOwoJCQlpZiAoYWxpZ25lZF9vdXRzdHJlYW1fb3V0cHV0QSA9PSBOVUxMKSB7CgkJCQltYXhf
+cmVwb3J0X2Vycm9yX3NsaWMoYWN0aW9ucy0+ZXJyb3JzLCBfX0ZJTEVfXywgX19MSU5FX18sIDUy
+NiwgIkZhaWxlZCB0byBhbGxvY2F0ZSBhbGlnbmVkIG1lbW9yeSBmb3Igc3RyZWFtICdvdXRwdXRB
+JyIpOwoJCQkJQ0hFQ0tfRVJST1JTOwoJCQl9CgkJCSgmY2JfZGF0YS0+c3RyZWFtW2NiX2RhdGEt
+PmNvdW50XSktPnVzZXJfcHRyICAgID0gKHVpbnQ4X3QqKSBpbnRlcmZhY2VfYWN0aW9ucy0+b3V0
+c3RyZWFtX291dHB1dEE7CgkJCSgmY2JfZGF0YS0+c3RyZWFtW2NiX2RhdGEtPmNvdW50XSktPmFs
+aWduZWRfcHRyID0gKHVpbnQ4X3QqKSBhbGlnbmVkX291dHN0cmVhbV9vdXRwdXRBOwoJCQkoJmNi
+X2RhdGEtPnN0cmVhbVtjYl9kYXRhLT5jb3VudF0pLT5zaXplICAgICAgICA9IG91dHN0cmVhbV9z
+aXplX291dHB1dEE7CgkJCSgmY2JfZGF0YS0+c3RyZWFtW2NiX2RhdGEtPmNvdW50XSktPmlzX291
+dHB1dCAgID0gMTsKCQkJY2JfZGF0YS0+Y291bnQgKz0gMTsKCQkJc3RyZWFtX3B0ciA9IGFsaWdu
+ZWRfb3V0c3RyZWFtX291dHB1dEE7CgkJfQoJCW1heF9xdWV1ZV9vdXRwdXQoYWN0aW9ucywgIm91
+dHB1dEEiLCBzdHJlYW1fcHRyLCBvdXRzdHJlYW1fc2l6ZV9vdXRwdXRBKTsKCQlDSEVDS19FUlJP
+UlM7Cgl9CgkvKiBlbmQgb2YgY29kZSBmb3Igc3RyZWFtIG91dHB1dEEgKi8KCQoJaW50NjRfdCB0
+bXBfMyA9IChwYXJhbV9OICogNCk7CgkKCS8qIGNvZGUgZm9yIHN0cmVhbSBvdXRwdXRCICovCglz
+aXplX3Qgb3V0c3RyZWFtX3NpemVfb3V0cHV0QiA9IHRtcF8zOwoJaWYgKG91dHN0cmVhbV9zaXpl
+X291dHB1dEIgPiAwKSB7CgkJZmxvYXQgKnN0cmVhbV9wdHIgPSBpbnRlcmZhY2VfYWN0aW9ucy0+
+b3V0c3RyZWFtX291dHB1dEI7CgkJaWYgKHVzZV9jYWxsYmFjayAmJiAoMSA9PSBRdWlja1NvcnRN
+YXhlbGVyX2NoZWNrX2FsaWduZWQoaW50ZXJmYWNlX2FjdGlvbnMtPm91dHN0cmVhbV9vdXRwdXRC
+KSkpIHsKCQkJZmxvYXQgKmFsaWduZWRfb3V0c3RyZWFtX291dHB1dEIgPSBtYWxsb2Mob3V0c3Ry
+ZWFtX3NpemVfb3V0cHV0Qik7CgkJCWlmIChhbGlnbmVkX291dHN0cmVhbV9vdXRwdXRCID09IE5V
+TEwpIHsKCQkJCW1heF9yZXBvcnRfZXJyb3Jfc2xpYyhhY3Rpb25zLT5lcnJvcnMsIF9fRklMRV9f
+LCBfX0xJTkVfXywgNTI2LCAiRmFpbGVkIHRvIGFsbG9jYXRlIGFsaWduZWQgbWVtb3J5IGZvciBz
+dHJlYW0gJ291dHB1dEInIik7CgkJCQlDSEVDS19FUlJPUlM7CgkJCX0KCQkJKCZjYl9kYXRhLT5z
+dHJlYW1bY2JfZGF0YS0+Y291bnRdKS0+dXNlcl9wdHIgICAgPSAodWludDhfdCopIGludGVyZmFj
+ZV9hY3Rpb25zLT5vdXRzdHJlYW1fb3V0cHV0QjsKCQkJKCZjYl9kYXRhLT5zdHJlYW1bY2JfZGF0
+YS0+Y291bnRdKS0+YWxpZ25lZF9wdHIgPSAodWludDhfdCopIGFsaWduZWRfb3V0c3RyZWFtX291
+dHB1dEI7CgkJCSgmY2JfZGF0YS0+c3RyZWFtW2NiX2RhdGEtPmNvdW50XSktPnNpemUgICAgICAg
+ID0gb3V0c3RyZWFtX3NpemVfb3V0cHV0QjsKCQkJKCZjYl9kYXRhLT5zdHJlYW1bY2JfZGF0YS0+
+Y291bnRdKS0+aXNfb3V0cHV0ICAgPSAxOwoJCQljYl9kYXRhLT5jb3VudCArPSAxOwoJCQlzdHJl
+YW1fcHRyID0gYWxpZ25lZF9vdXRzdHJlYW1fb3V0cHV0QjsKCQl9CgkJbWF4X3F1ZXVlX291dHB1
+dChhY3Rpb25zLCAib3V0cHV0QiIsIHN0cmVhbV9wdHIsIG91dHN0cmVhbV9zaXplX291dHB1dEIp
+OwoJCUNIRUNLX0VSUk9SUzsKCX0KCS8qIGVuZCBvZiBjb2RlIGZvciBzdHJlYW0gb3V0cHV0QiAq
+LwoJCgltYXhfc2V0X21lbV9yYW5nZV9kb3VibGUoYWN0aW9ucywgIlF1aWNrU29ydE1heGVsZXJL
+ZXJuZWwiLCAibWFwcGVkUm9tIiwgMCwgMjU2LCBpbnRlcmZhY2VfYWN0aW9ucy0+aW5tZW1fUXVp
+Y2tTb3J0TWF4ZWxlcktlcm5lbF9tYXBwZWRSb20pOwoJQ0hFQ0tfRVJST1JTOwoJCglpZiAodXNl
+X2NhbGxiYWNrICYmIGNiX2RhdGEtPmNvdW50ID09IDApIHsKCQkqY2FsbGJhY2tfZGF0YSA9IE5V
+TEw7CgkJKmNhbGxiYWNrX2Z1bmMgPSBOVUxMOwoJCWZyZWUoY2JfZGF0YSk7Cgl9CglyZXR1cm4g
+YWN0aW9uczsKI3VuZGVmIENIRUNLX0VSUk9SUwp9Cgp2b2lkIFF1aWNrU29ydE1heGVsZXIoCglp
+bnQzMl90IHBhcmFtX04sCgljb25zdCB1aW50OF90ICppbnN0cmVhbV9hZGRyZXNzQSwKCWNvbnN0
+IHVpbnQ4X3QgKmluc3RyZWFtX2FkZHJlc3NCLAoJZmxvYXQgKm91dHN0cmVhbV9vdXRwdXRBLAoJ
+ZmxvYXQgKm91dHN0cmVhbV9vdXRwdXRCLAoJY29uc3QgZG91YmxlICppbm1lbV9RdWlja1NvcnRN
+YXhlbGVyS2VybmVsX21hcHBlZFJvbSkKewoJKHZvaWQpIHB0aHJlYWRfb25jZSgmc2xpY19ic19p
+c19pbml0aWFsaXNlZCwgUXVpY2tTb3J0TWF4ZWxlcl9zdGF0aWNfaW5pdCk7CglDSEVDS19OVUxM
+KHN0b3JlZF9tYXhmaWxlLCAiTWF4ZmlsZSB3YXMgbm90IGxvYWRlZCIsICk7CgltYXhfcnVuX3Qg
+KnJ1biA9IFF1aWNrU29ydE1heGVsZXJfbm9uYmxvY2socGFyYW1fTiwgaW5zdHJlYW1fYWRkcmVz
+c0EsIGluc3RyZWFtX2FkZHJlc3NCLCBvdXRzdHJlYW1fb3V0cHV0QSwgb3V0c3RyZWFtX291dHB1
+dEIsIGlubWVtX1F1aWNrU29ydE1heGVsZXJLZXJuZWxfbWFwcGVkUm9tKTsKCUNIRUNLX05VTEwo
+cnVuLCAiVW5hYmxlIHRvIHJ1biBhY3Rpb25zIiwgKTsKCW1heF93YWl0KHJ1bik7Cn0KCm1heF9y
+dW5fdCAqUXVpY2tTb3J0TWF4ZWxlcl9ub25ibG9jaygKCWludDMyX3QgcGFyYW1fTiwKCWNvbnN0
+IHVpbnQ4X3QgKmluc3RyZWFtX2FkZHJlc3NBLAoJY29uc3QgdWludDhfdCAqaW5zdHJlYW1fYWRk
+cmVzc0IsCglmbG9hdCAqb3V0c3RyZWFtX291dHB1dEEsCglmbG9hdCAqb3V0c3RyZWFtX291dHB1
+dEIsCgljb25zdCBkb3VibGUgKmlubWVtX1F1aWNrU29ydE1heGVsZXJLZXJuZWxfbWFwcGVkUm9t
+KQp7CglRdWlja1NvcnRNYXhlbGVyX2FjdGlvbnNfdCBpbnRlcmZhY2VfYWN0aW9uczsKCWludGVy
+ZmFjZV9hY3Rpb25zLnBhcmFtX04gPSBwYXJhbV9OOwoJaW50ZXJmYWNlX2FjdGlvbnMuaW5zdHJl
+YW1fYWRkcmVzc0EgPSBpbnN0cmVhbV9hZGRyZXNzQTsKCWludGVyZmFjZV9hY3Rpb25zLmluc3Ry
+ZWFtX2FkZHJlc3NCID0gaW5zdHJlYW1fYWRkcmVzc0I7CglpbnRlcmZhY2VfYWN0aW9ucy5vdXRz
+dHJlYW1fb3V0cHV0QSA9IG91dHN0cmVhbV9vdXRwdXRBOwoJaW50ZXJmYWNlX2FjdGlvbnMub3V0
+c3RyZWFtX291dHB1dEIgPSBvdXRzdHJlYW1fb3V0cHV0QjsKCWludGVyZmFjZV9hY3Rpb25zLmlu
+bWVtX1F1aWNrU29ydE1heGVsZXJLZXJuZWxfbWFwcGVkUm9tID0gaW5tZW1fUXVpY2tTb3J0TWF4
+ZWxlcktlcm5lbF9tYXBwZWRSb207Cgkodm9pZCkgcHRocmVhZF9vbmNlKCZzbGljX2JzX2lzX2lu
+aXRpYWxpc2VkLCBRdWlja1NvcnRNYXhlbGVyX3N0YXRpY19pbml0KTsKCUNIRUNLX05VTEwoc3Rv
+cmVkX21heGZpbGUsICJNYXhmaWxlIHdhcyBub3QgbG9hZGVkIiwgTlVMTCk7Cgl2b2lkICgqY2Jf
+ZnVuYykodm9pZCopID0gTlVMTDsKCXZvaWQgICpjYl9kYXRhICAgICAgICAgPSBOVUxMOwoJbWF4
+X2FjdGlvbnNfdCAqYWN0aW9ucyA9IFF1aWNrU29ydE1heGVsZXJfY29udmVydF9pbnRlcm5hbChz
+dG9yZWRfbWF4ZmlsZSwgJmludGVyZmFjZV9hY3Rpb25zLCAxLCAmY2JfZnVuYywgJmNiX2RhdGEp
+OwoJQ0hFQ0tfTlVMTChhY3Rpb25zLCAiVW5hYmxlIHRvIGJ1aWxkIGFjdGlvbnMiLCBOVUxMKTsK
+CW1heF92YWxpZGF0ZShhY3Rpb25zKTsKCUNIRUNLX0VSUk9SU19TVChhY3Rpb25zLCBOVUxMKTsK
+CUNIRUNLX0VSUk9SU19TVChzdG9yZWRfZW5naW5lLCBOVUxMKTsKCW1heF9ydW5fdCAqcnVuOwoJ
+aWYgKGNiX2Z1bmMgPT0gTlVMTCkgewoJCXJ1biA9IG1heF9ydW5fbm9uYmxvY2soc3RvcmVkX2Vu
+Z2luZSwgYWN0aW9ucyk7Cgl9IGVsc2UgewoJCXJ1biA9IG1heF9ydW5fbm9uYmxvY2tfd2l0aF9j
+YihzdG9yZWRfZW5naW5lLCBhY3Rpb25zLCBjYl9mdW5jLCBjYl9kYXRhKTsKCX0KCUNIRUNLX05V
+TEwocnVuLCAiVW5hYmxlIHRvIHJ1biBhY3Rpb25zIiwgTlVMTCk7CglDSEVDS19FUlJPUlNfU1Qo
+YWN0aW9ucywgTlVMTCk7CgltYXhfYWN0aW9uc19mcmVlKGFjdGlvbnMpOwoJcmV0dXJuIHJ1bjsK
+fQoKdm9pZCBRdWlja1NvcnRNYXhlbGVyX3J1bigKCW1heF9lbmdpbmVfdCAqZW5naW5lLAoJUXVp
+Y2tTb3J0TWF4ZWxlcl9hY3Rpb25zX3QgKmludGVyZmFjZV9hY3Rpb25zKQp7CgltYXhfcnVuX3Qg
+KnJ1biA9IFF1aWNrU29ydE1heGVsZXJfcnVuX25vbmJsb2NrKGVuZ2luZSwgaW50ZXJmYWNlX2Fj
+dGlvbnMpOwoJQ0hFQ0tfTlVMTChydW4sICJVbmFibGUgdG8gcnVuIGFjdGlvbnMiLCApOwoJbWF4
+X3dhaXQocnVuKTsKfQoKbWF4X3J1bl90ICpRdWlja1NvcnRNYXhlbGVyX3J1bl9ub25ibG9jaygK
+CW1heF9lbmdpbmVfdCAqZW5naW5lLAoJUXVpY2tTb3J0TWF4ZWxlcl9hY3Rpb25zX3QgKmludGVy
+ZmFjZV9hY3Rpb25zKQp7CgltYXhfZmlsZV90ICptYXhmaWxlID0gbWF4X2VuZ2luZV9nZXRfbWF4
+X2ZpbGUoZW5naW5lKTsgCgl2b2lkICgqY2JfZnVuYykodm9pZCopID0gTlVMTDsKCXZvaWQgICpj
+Yl9kYXRhICAgICAgICAgPSBOVUxMOwoJbWF4X2FjdGlvbnNfdCAqYWN0aW9ucyA9IFF1aWNrU29y
+dE1heGVsZXJfY29udmVydF9pbnRlcm5hbChtYXhmaWxlLCBpbnRlcmZhY2VfYWN0aW9ucywgMSwg
+JmNiX2Z1bmMsICZjYl9kYXRhKTsKCUNIRUNLX0VSUk9SU19TVChhY3Rpb25zLCBOVUxMKTsKCW1h
+eF9ydW5fdCAqcnVuOwoJaWYgKGNiX2Z1bmMgPT0gTlVMTCkgewoJCXJ1biA9IG1heF9ydW5fbm9u
+YmxvY2soZW5naW5lLCBhY3Rpb25zKTsKCX0gZWxzZSB7CgkJcnVuID0gbWF4X3J1bl9ub25ibG9j
+a193aXRoX2NiKGVuZ2luZSwgYWN0aW9ucywgY2JfZnVuYywgY2JfZGF0YSk7Cgl9CglDSEVDS19O
+VUxMKHJ1biwgIlVuYWJsZSB0byBydW4gYWN0aW9ucyIsIE5VTEwpOwoJbWF4X2FjdGlvbnNfZnJl
+ZShhY3Rpb25zKTsKCXJldHVybiBydW47Cn0KCgovKioKICogXGJyaWVmIEdyb3VwIHJ1biBhZHZh
+bmNlZCBzdGF0aWMgZnVuY3Rpb24gZm9yIHRoZSBpbnRlcmZhY2UgJ2RlZmF1bHQnLgogKiAKICog
+XHBhcmFtIFtpbl0gZ3JvdXAgR3JvdXAgdG8gdXNlLgogKiBccGFyYW0gW2luLG91dF0gaW50ZXJm
+YWNlX2FjdGlvbnMgQWN0aW9ucyB0byBydW4uCiAqCiAqIFJ1biB0aGUgYWN0aW9ucyBvbiB0aGUg
+Zmlyc3QgZGV2aWNlIGF2YWlsYWJsZSBpbiB0aGUgZ3JvdXAuCiAqLwp2b2lkIFF1aWNrU29ydE1h
+eGVsZXJfcnVuX2dyb3VwKG1heF9ncm91cF90ICpncm91cCwgUXVpY2tTb3J0TWF4ZWxlcl9hY3Rp
+b25zX3QgKmludGVyZmFjZV9hY3Rpb25zKQp7CgltYXhfcnVuX3QgKnJ1biA9IFF1aWNrU29ydE1h
+eGVsZXJfcnVuX2dyb3VwX25vbmJsb2NrKGdyb3VwLCBpbnRlcmZhY2VfYWN0aW9ucyk7CglDSEVD
+S19OVUxMKHJ1biwgIlVuYWJsZSB0byBydW4gYWN0aW9ucyIsICk7CgltYXhfd2FpdChydW4pOwp9
+CgoKLyoqCiAqIFxicmllZiBHcm91cCBydW4gYWR2YW5jZWQgc3RhdGljIG5vbi1ibG9ja2luZyBm
+dW5jdGlvbiBmb3IgdGhlIGludGVyZmFjZSAnZGVmYXVsdCcuCiAqIAogKgogKiBTY2hlZHVsZSB0
+aGUgYWN0aW9ucyB0byBydW4gb24gdGhlIGZpcnN0IGRldmljZSBhdmFpbGFibGUgaW4gdGhlIGdy
+b3VwIGFuZCByZXR1cm4gaW1tZWRpYXRlbHkuCiAqIFRoZSBzdGF0dXMgb2YgdGhlIHJ1biBtdXN0
+IGJlIGNoZWNrZWQgd2l0aCA6Om1heF93YWl0LiAKICogTm90ZSB0aGF0IHVzZSBvZiA6Om1heF9u
+b3dhaXQgaXMgcHJvaGliaXRlZCB3aXRoIG5vbi1ibG9ja2luZyBydW5uaW5nIG9uIGdyb3VwczoK
+ICogc2VlIHRoZSA6Om1heF9ydW5fZ3JvdXBfbm9uYmxvY2sgZG9jdW1lbnRhdGlvbiBmb3IgbW9y
+ZSBleHBsYW5hdGlvbi4KICoKICogXHBhcmFtIFtpbl0gZ3JvdXAgR3JvdXAgdG8gdXNlLgogKiBc
+cGFyYW0gW2luXSBpbnRlcmZhY2VfYWN0aW9ucyBBY3Rpb25zIHRvIHJ1bi4KICogXHJldHVybiBB
+IGhhbmRsZSBvbiB0aGUgZXhlY3V0aW9uIHN0YXR1cyBvZiB0aGUgYWN0aW9ucywgb3IgTlVMTCBp
+biBjYXNlIG9mIGVycm9yLgogKi8KbWF4X3J1bl90ICpRdWlja1NvcnRNYXhlbGVyX3J1bl9ncm91
+cF9ub25ibG9jayhtYXhfZ3JvdXBfdCAqZ3JvdXAsIFF1aWNrU29ydE1heGVsZXJfYWN0aW9uc190
+ICppbnRlcmZhY2VfYWN0aW9ucykKewoJbWF4X2ZpbGVfdCAqbWF4ZmlsZSA9IG1heF9ncm91cF9n
+ZXRfbWF4X2ZpbGUoZ3JvdXApOwoJbWF4X2FjdGlvbnNfdCAqYWN0aW9ucyA9IFF1aWNrU29ydE1h
+eGVsZXJfY29udmVydF9pbnRlcm5hbChtYXhmaWxlLCBpbnRlcmZhY2VfYWN0aW9ucywgMSwgTlVM
+TCwgTlVMTCk7CglpZihhY3Rpb25zID09IE5VTEwpIHJldHVybiBOVUxMOwoJaWYoIW1heF9vayhh
+Y3Rpb25zLT5lcnJvcnMpKSByZXR1cm4gTlVMTDsKCW1heF92YWxpZGF0ZShhY3Rpb25zKTsKCW1h
+eF9ydW5fdCAqcnVuID0gbWF4X3J1bl9ncm91cF9ub25ibG9jayhncm91cCwgYWN0aW9ucyk7Cglt
+YXhfYWN0aW9uc19mcmVlKGFjdGlvbnMpOwoJcmV0dXJuIHJ1bjsKfQoKCi8qKgogKiBcYnJpZWYg
+QXJyYXkgcnVuIGFkdmFuY2VkIHN0YXRpYyBmdW5jdGlvbiBmb3IgdGhlIGludGVyZmFjZSAnZGVm
+YXVsdCcuCiAqIAogKiBccGFyYW0gW2luXSBlbmdhcnJheSBUaGUgYXJyYXkgb2YgZGV2aWNlcyB0
+byB1c2UuCiAqIFxwYXJhbSBbaW4sb3V0XSBpbnRlcmZhY2VfYWN0aW9ucyBUaGUgYXJyYXkgb2Yg
+YWN0aW9ucyB0byBydW4uCiAqCiAqIFJ1biB0aGUgYXJyYXkgb2YgYWN0aW9ucyBvbiB0aGUgYXJy
+YXkgb2YgZW5naW5lcy4gIFRoZSBsZW5ndGggb2YgaW50ZXJmYWNlX2FjdGlvbnMKICogbXVzdCBt
+YXRjaCB0aGUgc2l6ZSBvZiBlbmdhcnJheS4KICovCnZvaWQgUXVpY2tTb3J0TWF4ZWxlcl9ydW5f
+YXJyYXkobWF4X2VuZ2FycmF5X3QgKmVuZ2FycmF5LCBRdWlja1NvcnRNYXhlbGVyX2FjdGlvbnNf
+dCAqaW50ZXJmYWNlX2FjdGlvbnNbXSkKewoJbWF4X3J1bl90ICpydW4gPSBRdWlja1NvcnRNYXhl
+bGVyX3J1bl9hcnJheV9ub25ibG9jayhlbmdhcnJheSwgaW50ZXJmYWNlX2FjdGlvbnMpOwoJQ0hF
+Q0tfTlVMTChydW4sICJVbmFibGUgdG8gcnVuIGFjdGlvbnMiLCApOwoJbWF4X3dhaXQocnVuKTsK
+fQoKCi8qKgogKiBcYnJpZWYgQXJyYXkgcnVuIGFkdmFuY2VkIHN0YXRpYyBub24tYmxvY2tpbmcg
+ZnVuY3Rpb24gZm9yIHRoZSBpbnRlcmZhY2UgJ2RlZmF1bHQnLgogKiAKICoKICogU2NoZWR1bGUg
+dG8gcnVuIHRoZSBhcnJheSBvZiBhY3Rpb25zIG9uIHRoZSBhcnJheSBvZiBlbmdpbmVzLCBhbmQg
+cmV0dXJuIGltbWVkaWF0ZWx5LgogKiBUaGUgbGVuZ3RoIG9mIGludGVyZmFjZV9hY3Rpb25zIG11
+c3QgbWF0Y2ggdGhlIHNpemUgb2YgZW5nYXJyYXkuCiAqIFRoZSBzdGF0dXMgb2YgdGhlIHJ1biBj
+YW4gYmUgY2hlY2tlZCBlaXRoZXIgYnkgOjptYXhfd2FpdCBvciA6Om1heF9ub3dhaXQ7CiAqIG5v
+dGUgdGhhdCBvbmUgb2YgdGhlc2UgKm11c3QqIGJlIGNhbGxlZCwgc28gdGhhdCBhc3NvY2lhdGVk
+IG1lbW9yeSBjYW4gYmUgcmVsZWFzZWQuCiAqCiAqIFxwYXJhbSBbaW5dIGVuZ2FycmF5IFRoZSBh
+cnJheSBvZiBkZXZpY2VzIHRvIHVzZS4KICogXHBhcmFtIFtpbl0gaW50ZXJmYWNlX2FjdGlvbnMg
+VGhlIGFycmF5IG9mIGFjdGlvbnMgdG8gcnVuLgogKiBccmV0dXJuIEEgaGFuZGxlIG9uIHRoZSBl
+eGVjdXRpb24gc3RhdHVzIG9mIHRoZSBhY3Rpb25zLCBvciBOVUxMIGluIGNhc2Ugb2YgZXJyb3Iu
+CiAqLwptYXhfcnVuX3QgKlF1aWNrU29ydE1heGVsZXJfcnVuX2FycmF5X25vbmJsb2NrKG1heF9l
+bmdhcnJheV90ICplbmdhcnJheSwgUXVpY2tTb3J0TWF4ZWxlcl9hY3Rpb25zX3QgKmludGVyZmFj
+ZV9hY3Rpb25zW10pCnsKCW1heF9maWxlX3QgKm1heGZpbGUgPSBtYXhfZW5nYXJyYXlfZ2V0X21h
+eF9maWxlKGVuZ2FycmF5LCAwKTsKCWludCBpOwoJbWF4X2FjdGFycmF5X3QgKmFjdGFycmF5ID0g
+bWF4X2FjdGFycmF5X2luaXQobWF4ZmlsZSwgZW5nYXJyYXktPnNpemUpOwoJaWYgKGFjdGFycmF5
+ID09IE5VTEwpIHJldHVybiBOVUxMOwoJbWF4X2FjdGlvbnNfdCAqKmFycl9hY3Rpb25zID0gbWFs
+bG9jKGVuZ2FycmF5LT5zaXplICogc2l6ZW9mKG1heF9hY3Rpb25zX3QqKSk7Cglmb3IgKCBpID0g
+MCA7IGkgPCBhY3RhcnJheS0+c2l6ZTsgaSsrICkgewoJCW1heF9hY3Rpb25zX3QgKmFjdGlvbnMg
+PSBRdWlja1NvcnRNYXhlbGVyX2NvbnZlcnRfaW50ZXJuYWwobWF4ZmlsZSwgaW50ZXJmYWNlX2Fj
+dGlvbnNbaV0sIDEsIE5VTEwsIE5VTEwpOwoJCWlmIChhY3Rpb25zID09IE5VTEwpIHJldHVybiBO
+VUxMOwoJCWFycl9hY3Rpb25zW2ldID0gYWN0aW9uczsKCQltYXhfc2V0X2FjdGlvbihhY3RhcnJh
+eSwgaSwgYWN0aW9ucyk7Cgl9CgltYXhfcnVuX3QgKnJ1biA9IG1heF9ydW5fYXJyYXlfbm9uYmxv
+Y2soZW5nYXJyYXksIGFjdGFycmF5KTsKCWZvciAoIGkgPSAwIDsgaSA8IGFjdGFycmF5LT5zaXpl
+IDsgaSsrICkgeyBtYXhfYWN0aW9uc19mcmVlKGFycl9hY3Rpb25zW2ldKTsgfQoJbWF4X2FjdGFy
+cmF5X2ZyZWUoYWN0YXJyYXkpOwoJZnJlZShhcnJfYWN0aW9ucyk7CglyZXR1cm4gcnVuOwp9CgoK
+LyoqCiAqIFxicmllZiBDb252ZXJ0cyBhIHN0YXRpYy1pbnRlcmZhY2UgYWN0aW9uIHN0cnVjdCBp
+bnRvIGEgZHluYW1pYy1pbnRlcmZhY2UgbWF4X2FjdGlvbnNfdCBzdHJ1Y3QuCiAqCiAqIE5vdGUg
+dGhhdCB0aGlzIGlzIGFuIGludGVybmFsIHV0aWxpdHkgZnVuY3Rpb24gdXNlZCBieSBvdGhlciBm
+dW5jdGlvbnMgaW4gdGhlIHN0YXRpYyBpbnRlcmZhY2UuCiAqCiAqIFxwYXJhbSBbaW5dIG1heGZp
+bGUgVGhlIG1heGZpbGUgdG8gdXNlLgogKiBccGFyYW0gW2luXSBpbnRlcmZhY2VfYWN0aW9ucyBU
+aGUgaW50ZXJmYWNlLXNwZWNpZmljIGFjdGlvbnMgdG8gcnVuLgogKiBccmV0dXJuIFRoZSBkeW5h
+bWljLWludGVyZmFjZSBhY3Rpb25zIHRvIHJ1biwgb3IgTlVMTCBpbiBjYXNlIG9mIGVycm9yLgog
+Ki8KbWF4X2FjdGlvbnNfdCogUXVpY2tTb3J0TWF4ZWxlcl9jb252ZXJ0KG1heF9maWxlX3QgKm1h
+eGZpbGUsIFF1aWNrU29ydE1heGVsZXJfYWN0aW9uc190ICppbnRlcmZhY2VfYWN0aW9ucykKewoJ
+cmV0dXJuIFF1aWNrU29ydE1heGVsZXJfY29udmVydF9pbnRlcm5hbChtYXhmaWxlLCBpbnRlcmZh
+Y2VfYWN0aW9ucywgMCwgTlVMTCwgTlVMTCk7Cn0KCiN1bmRlZiBDSEVDS19FUlJPUlNfU1QKI3Vu
+ZGVmIENIRUNLX05VTEwKCgo=
+#endif /* SLIC_B64_DEFINITIONS */
+
+#ifdef SLIC_EXTRA_FILES
+PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHVz
+ZXJmaWxlcyBmb3JtYXQtdmVyc2lvbj0iMjAxMjAyMDAiLz4=
+#endif /* SLIC_EXTRA_FILES */
+
+#ifdef PHOTON_NODE_ADD_DATA
+#define PHOTON_NODE_ADD_DATA_PRESENT 1
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 30, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 0, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 1, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 2, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 35, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 31, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 3, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 4, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 5, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 17, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 32, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 36, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 33, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 34, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 6, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 8, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 9, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 11, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 13, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 14, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 16, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 22, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 38, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 19, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 20, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 21, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 23, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 37, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 25, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 26, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 28, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 29, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(QuickSortMaxelerKernel, 27, "SquashFactor", 0.0)
+#endif
+
+#ifdef MAXFILE_SIGNATURE
+#define MAXFILE_SIGNATURE_PRESENT 1
+MAXFILE_SIGNATURE("302c02140eae3d89ff1dd8a5d70c1d853342f4eb545730a7021429c49b6ae1e42f71887bf1fb47dc3cea98bdeb2b")
+#endif
+
