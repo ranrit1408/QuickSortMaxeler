@@ -5,3 +5,7 @@ QuickSort is an efficient Sort Algorithm which uses the technique to divide and 
 is converted a subset that is getting sorted so at the end is returning a complete sort result.
 
 This project implementation was done using MaxJ 5.1 and using the paradigm of DataFlow Computing for optimization.
+
+Created by 
+Angel Rangel Reyes
+angel.rangel@gmail.com
